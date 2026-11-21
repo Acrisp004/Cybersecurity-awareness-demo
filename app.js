@@ -12,6 +12,307 @@
     {id:'knitluxe',name:'KnitLuxe Heated Throw',type:'throw',color:'Rose',price:34,old:49,rating:4.8,reviews:'1,276',image:'knitluxe.jpg',sale:true,swatches:['#be898c','#e6d7c6','#91a18d','#c0bec1'],intro:'A charming rose-toned, chunky-knit-look throw made for comfortable lounging and gentle warmth.',features:['Soft textured-knit look','Adjustable warmth','Fringed decorative edges','Compact couch-friendly size'],material:'Soft polyester knit-look fleece',care:'Disconnect controller; hand wash or use gentle machine cycle.',sizes:{Throw:'50 × 60 in'}},
     {id:'evercozy',name:'EverCozy Bedding Gift Set',type:'gift',color:'Ivory',price:159,rating:4.9,reviews:'428',image:'evercozy.jpg',swatches:['#e7dbcd','#a5a5a2','#97a48d','#445066'],intro:'A thoughtful coordinated bundle featuring a plush heated blanket, a lightweight quilt and matching shams.',features:['Heated blanket included','Coordinated quilt and pillow shams','Gift-ready neutral palette','Mix-and-match styling'],material:'Polyester heated blanket with cotton-blend bedding',care:'Wash bedding separately; disconnect heating controller first.',sizes:{Queen:'Queen bedding bundle',King:'King bedding bundle'}}
   ];
+
+  // Fictional examples for a classroom demo. No visitors can submit reviews.
+  const sampleReviews = {
+  "thermasoft": [
+    {
+      "name": "Maya R.",
+      "date": "2026-11-11",
+      "stars": 5,
+      "title": "Warm without feeling heavy",
+      "body": "The fabric feels soft and the heat spreads evenly across the blanket. I mostly use the middle setting when reading at night. The controller is straightforward."
+    },
+    {
+      "name": "Jordan T.",
+      "date": "2026-10-27",
+      "stars": 4,
+      "title": "Nice for cold evenings",
+      "body": "It heats up well and the ivory color looks good on my bed. I wish the controller cord were slightly longer, but overall I like it."
+    },
+    {
+      "name": "Elena P.",
+      "date": "2026-10-14",
+      "stars": 5,
+      "title": "A cozy upgrade",
+      "body": "The channel stitching looks neat and the blanket has a good weight to it. It has become the first thing I reach for when the temperature drops."
+    },
+    {
+      "name": "Chris M.",
+      "date": "2026-09-29",
+      "stars": 3,
+      "title": "Soft, but consider the size",
+      "body": "The fabric is comfortable, but the throw size was smaller than I expected for sharing on the couch. Check the measurements before choosing."
+    },
+    {
+      "name": "Taylor W.",
+      "date": "2026-09-11",
+      "stars": 4,
+      "title": "Easy to care for",
+      "body": "I followed the washing instructions and it came out looking good. Detaching the controller takes a moment, so I would read the care label first."
+    }
+  ],
+  "haven-quilt": [
+    {
+      "name": "Avery K.",
+      "date": "2026-11-09",
+      "stars": 5,
+      "title": "Great for layering",
+      "body": "The olive color is muted and works well with cream sheets. It adds texture without making the bed look bulky."
+    },
+    {
+      "name": "Morgan L.",
+      "date": "2026-10-20",
+      "stars": 4,
+      "title": "Lightweight and comfortable",
+      "body": "The stitching looks tidy and the quilt feels good for mild weather. In the winter I would add another blanket."
+    },
+    {
+      "name": "Riley D.",
+      "date": "2026-10-04",
+      "stars": 5,
+      "title": "Just the style I wanted",
+      "body": "The square pattern is subtle in person. I like that the set includes shams, so the bed looks coordinated."
+    },
+    {
+      "name": "Sam H.",
+      "date": "2026-09-19",
+      "stars": 3,
+      "title": "Color is a little different",
+      "body": "The quilt feels nice, but the green was slightly grayer than it appeared on my screen. I would recommend checking swatches."
+    },
+    {
+      "name": "Casey N.",
+      "date": "2026-09-02",
+      "stars": 4,
+      "title": "Good everyday quilt",
+      "body": "It washes well on a gentle cycle and folds easily. A nice lightweight option for a guest room."
+    }
+  ],
+  "cloudloft": [
+    {
+      "name": "Jamie S.",
+      "date": "2026-11-13",
+      "stars": 5,
+      "title": "Very soft throw",
+      "body": "The fluffy texture is the standout feature. It feels warm and comfortable on the couch, even before the heating is turned on."
+    },
+    {
+      "name": "Dana P.",
+      "date": "2026-10-28",
+      "stars": 5,
+      "title": "A good gift idea",
+      "body": "The size is right for one person and the neutral color fits most rooms. I would happily give one as a winter gift."
+    },
+    {
+      "name": "Alex G.",
+      "date": "2026-10-12",
+      "stars": 4,
+      "title": "Cozy, with one small issue",
+      "body": "It gets comfortably warm and feels plush. The controller is easy to use, but I wish it had a brighter display."
+    },
+    {
+      "name": "Leslie B.",
+      "date": "2026-09-24",
+      "stars": 3,
+      "title": "Great texture, small size",
+      "body": "Really comfortable fabric, though the throw is best for one person. I expected a little more coverage."
+    },
+    {
+      "name": "Quinn F.",
+      "date": "2026-09-05",
+      "stars": 5,
+      "title": "My reading chair favorite",
+      "body": "I keep it folded by my chair. The fabric is soft against bare arms and has a pleasant weight."
+    }
+  ],
+  "willow-coverlet": [
+    {
+      "name": "Noah C.",
+      "date": "2026-11-08",
+      "stars": 5,
+      "title": "Clean and simple look",
+      "body": "The texture gives the bed some dimension without a bold pattern. I paired it with darker pillowcases."
+    },
+    {
+      "name": "Pat R.",
+      "date": "2026-10-22",
+      "stars": 4,
+      "title": "Works well in warmer months",
+      "body": "This is lighter than my comforter and easy to layer. The color is a little warmer than I expected."
+    },
+    {
+      "name": "Drew S.",
+      "date": "2026-10-02",
+      "stars": 5,
+      "title": "Nice finish on the edges",
+      "body": "The stitching is tidy and the coverlet drapes well at the foot of the bed. I like the understated style."
+    },
+    {
+      "name": "Robin J.",
+      "date": "2026-09-20",
+      "stars": 3,
+      "title": "Check the dimensions",
+      "body": "The quality is fine, but I wanted more overhang on the sides. I would size up if you like a longer drape."
+    },
+    {
+      "name": "Frankie L.",
+      "date": "2026-09-03",
+      "stars": 4,
+      "title": "Good guest room option",
+      "body": "It gives the room a put-together look and does not feel too heavy. Easy to fold and store."
+    }
+  ],
+  "ultraplush": [
+    {
+      "name": "Emerson V.",
+      "date": "2026-11-12",
+      "stars": 5,
+      "title": "Warm and thick",
+      "body": "The plush fabric has a noticeably thicker feel than my old blanket. Great for evenings when the house is cold."
+    },
+    {
+      "name": "Sydney Q.",
+      "date": "2026-10-26",
+      "stars": 4,
+      "title": "Cozy but a little bulky",
+      "body": "It feels luxurious and warm, although it takes more room in the closet than a lighter throw."
+    },
+    {
+      "name": "Parker T.",
+      "date": "2026-10-09",
+      "stars": 5,
+      "title": "Love the charcoal color",
+      "body": "The dark gray looks great with neutral bedding. The softness was exactly what I hoped for."
+    },
+    {
+      "name": "Hayden M.",
+      "date": "2026-09-21",
+      "stars": 3,
+      "title": "Check the weight first",
+      "body": "The warmth is nice, but I prefer a lighter blanket. If you like heavy plush layers you may enjoy it more."
+    },
+    {
+      "name": "Jesse B.",
+      "date": "2026-09-07",
+      "stars": 4,
+      "title": "Comfortable for colder nights",
+      "body": "The controller is simple to figure out and the blanket is soft. I would like more color options."
+    }
+  ],
+  "meadow-bloom": [
+    {
+      "name": "Blair A.",
+      "date": "2026-11-10",
+      "stars": 5,
+      "title": "Pretty floral pattern",
+      "body": "The botanical print is subtle rather than busy. It brightened my bedroom without overpowering the furniture."
+    },
+    {
+      "name": "Terry E.",
+      "date": "2026-10-23",
+      "stars": 4,
+      "title": "Nice lightweight quilt",
+      "body": "The set looks coordinated and feels comfortable. It is better as a top layer than a heavy winter blanket."
+    },
+    {
+      "name": "Kim N.",
+      "date": "2026-10-06",
+      "stars": 5,
+      "title": "Lovely neutral colors",
+      "body": "The cream and floral colors look soft in daylight. The matching shams were a nice touch."
+    },
+    {
+      "name": "Reese O.",
+      "date": "2026-09-16",
+      "stars": 3,
+      "title": "Pattern scale surprised me",
+      "body": "The print looked smaller in the photos. The fabric is comfortable, but I would zoom in on the pattern next time."
+    },
+    {
+      "name": "Finley W.",
+      "date": "2026-09-04",
+      "stars": 4,
+      "title": "Easy to style",
+      "body": "Looks good with simple bedding and throws. I washed it once on gentle and it kept its shape."
+    }
+  ],
+  "knitluxe": [
+    {
+      "name": "Harper M.",
+      "date": "2026-11-14",
+      "stars": 5,
+      "title": "Love the rose color",
+      "body": "The dusty pink looks warm and inviting on my cream chair. It is soft and looks nice when draped over the arm."
+    },
+    {
+      "name": "Cameron S.",
+      "date": "2026-10-30",
+      "stars": 4,
+      "title": "Soft and stylish",
+      "body": "It adds a cozy touch to the living room. The fringe is pretty, but it can get caught if you are not careful."
+    },
+    {
+      "name": "Lee P.",
+      "date": "2026-10-11",
+      "stars": 5,
+      "title": "Looks more expensive than it is",
+      "body": "The knit-look texture is convincing and the throw feels comfortable. It was a nice little refresh for my couch."
+    },
+    {
+      "name": "Jules D.",
+      "date": "2026-09-28",
+      "stars": 3,
+      "title": "A bit smaller than expected",
+      "body": "The color and texture are lovely, but it works better as a lap blanket than something to fully wrap up in."
+    },
+    {
+      "name": "Skyler R.",
+      "date": "2026-09-09",
+      "stars": 4,
+      "title": "Good for relaxing",
+      "body": "The fabric feels soft against my skin. I would love a slightly larger option in the same color."
+    }
+  ],
+  "evercozy": [
+    {
+      "name": "Ari H.",
+      "date": "2026-11-07",
+      "stars": 5,
+      "title": "A thoughtful gift set",
+      "body": "I liked having the coordinating pieces together. The neutral palette makes it easy to style a room."
+    },
+    {
+      "name": "Charlie P.",
+      "date": "2026-10-25",
+      "stars": 4,
+      "title": "Convenient bundle",
+      "body": "The quilt and shams match well. I recommend reading the dimensions because the blanket and quilt have different sizing."
+    },
+    {
+      "name": "Bailey J.",
+      "date": "2026-10-08",
+      "stars": 5,
+      "title": "Everything works together",
+      "body": "The bedding layers look cohesive without trying too hard. A handy choice when refreshing a guest room."
+    },
+    {
+      "name": "Milan F.",
+      "date": "2026-09-23",
+      "stars": 3,
+      "title": "Good set, lots of packaging",
+      "body": "The pieces look nice together, but I wish the packaging had been simpler. I would also appreciate more color combinations."
+    },
+    {
+      "name": "Devon L.",
+      "date": "2026-09-01",
+      "stars": 4,
+      "title": "Nice coordinated look",
+      "body": "A practical way to get a matching room setup. The blanket feels plush and the quilt is lighter."
+    }
+  ]
+};
+
   const byId = Object.fromEntries(products.map(p=>[p.id,p]));
   const key='cozynest-demo-cart-v1', wishKey='cozynest-demo-faves-v1';
   const money=n=>'$'+n.toFixed(2);
@@ -27,7 +328,7 @@
     renderCount();
   };
   const siteFooter=()=>document.querySelector('#site-footer').innerHTML=`<footer class="footer"><div class="footer-inner"><div class="footer-item"><span class="footer-icon">☎</span><div><strong>Phone</strong><br>(402) 555-0187<br>(402) 555-0142</div></div><div class="footer-item"><span class="footer-icon">◷</span><div><strong>Store Hours</strong><br>Mon–Fri 9 AM–7 PM<br>Sat 10 AM–6 PM · Sun 12 PM–5 PM</div></div><div class="footer-item"><span class="footer-icon">⌖</span><div><strong>Store Location (fictional)</strong><br>1847 Willow Creek Lane<br>Lincoln, NE 68508</div></div><div class="footer-item"><span class="footer-icon">✉</span><div><strong>Email (fictional)</strong><br>hello@cozynesthome.example</div></div></div><div class="footer-note">© 2026 CozyNest Home — Classroom simulation only. No real store, products, transactions or personal-data collection.</div></footer>`;
-  const card=(p)=>`<article class="product-card"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a href="product.html?id=${p.id}" aria-label="View ${p.name}"><img src="${p.image}" alt="${p.name}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><span class="stars">★</span> ${p.rating.toFixed(1)} &nbsp;(${p.reviews})</div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" aria-label="Available color choices">${p.swatches.map(c=>`<span class="swatch" style="background:${c}"></span>`).join('')}</div></article>`;
+  const card=(p)=>`<article class="product-card"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a href="product.html?id=${p.id}" aria-label="View ${p.name}"><img src="${p.image}" alt="${p.name}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><a class="review-link" href="product.html?id=${p.id}#customer-reviews" aria-label="Read sample reviews for ${p.name}"><span class="stars">★</span> ${p.rating.toFixed(1)} &nbsp;(${p.reviews} fictional ratings) <span aria-hidden="true">↗</span></a></div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" aria-label="Available color choices">${p.swatches.map(c=>`<span class="swatch" style="background:${c}"></span>`).join('')}</div></article>`;
   const favoritesHandler=()=>document.addEventListener('click',e=>{const btn=e.target.closest('[data-favorite]');if(!btn)return;const id=btn.dataset.favorite;const f=favorites();const next=f.includes(id)?f.filter(x=>x!==id):[...f,id];localStorage.setItem(wishKey,JSON.stringify(next));document.querySelectorAll(`[data-favorite="${id}"]`).forEach(b=>{b.classList.toggle('active',next.includes(id));b.textContent=next.includes(id)?'♥':'♡'});toast(next.includes(id)?'Saved to your demo favorites':'Removed from favorites')});
   const home=()=>{
     const cats=[['all','All','cat-all.png'],['heated','Heated Blankets','cat-heated.png'],['quilt','Quilts','cat-quilts.png'],['throw','Throws','cat-throws.png'],['coverlet','Coverlets','cat-coverlets.png'],['gift','Gift Sets','cat-gifts.png'],['sham','Shams','cat-shams.png']];
@@ -47,9 +348,40 @@
     ['type-filter','color-filter','price-filter','deal-filter','sort-filter'].forEach(id=>document.getElementById(id).addEventListener('change',render));
     document.querySelector('#search-input').addEventListener('input',render);render();
   };
+
+  const reviewStars = count => `<span class="review-stars" aria-label="${count} out of 5 stars">${'★'.repeat(count)}<span class="star-empty">${'☆'.repeat(5-count)}</span></span>`;
+  const reviewSection = p => {
+    const records = sampleReviews[p.id] || [];
+    const counts = [5,4,3,2,1].map(stars=>({stars,count:records.filter(r=>r.stars===stars).length}));
+    return `<section id="customer-reviews" class="reviews-section" aria-labelledby="reviews-heading">
+      <div class="reviews-heading"><div><p class="reviews-kicker">SHOPPING EXPERIENCE</p><h2 id="reviews-heading">Customer reviews</h2><p class="reviews-disclosure"><strong>Fictional sample reviews:</strong> Written solely for this cybersecurity classroom demonstration. These are not customer testimonials, verified purchases, or actual ratings.</p></div></div>
+      <div class="reviews-overview"><div class="review-overall"><strong>${p.rating.toFixed(1)}</strong><span class="stars" aria-hidden="true">★★★★★</span><span>${p.reviews} simulated ratings</span><small>${records.length} sample comments displayed below</small></div>
+      <div class="rating-breakdown" aria-label="Star ratings in the sample comments">${counts.map(c=>`<div class="rating-bar-row"><span>${c.stars} star</span><div class="rating-bar"><span style="width:${records.length?100*c.count/records.length:0}%"></span></div><span>${c.count}</span></div>`).join('')}</div></div>
+      <div class="reviews-toolbar"><strong><span id="review-visible-count">${records.length}</span> sample comments</strong><div class="review-controls"><label for="review-filter">Rating</label><select id="review-filter"><option value="all">All stars</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option></select><label for="review-sort">Sort by</label><select id="review-sort"><option value="recent">Most recent</option><option value="highest">Highest rating</option><option value="lowest">Lowest rating</option></select></div></div>
+      <div id="review-list" class="review-list" aria-live="polite"></div>
+      <p class="reviews-footer-note">All comments, reviewer names and dates on this page are invented for the classroom exercise.</p>
+    </section>`;
+  };
+  const setupReviews = p => {
+    const root = document.getElementById('review-list');
+    const filter = document.getElementById('review-filter');
+    const sort = document.getElementById('review-sort');
+    const formatDate = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+    const render = () => {
+      let arr = [...(sampleReviews[p.id]||[])];
+      if(filter.value!=='all') arr=arr.filter(r=>r.stars===Number(filter.value));
+      if(sort.value==='highest') arr.sort((a,b)=>b.stars-a.stars||b.date.localeCompare(a.date));
+      if(sort.value==='lowest') arr.sort((a,b)=>a.stars-b.stars||b.date.localeCompare(a.date));
+      if(sort.value==='recent') arr.sort((a,b)=>b.date.localeCompare(a.date));
+      document.getElementById('review-visible-count').textContent=arr.length;
+      root.innerHTML=arr.length?arr.map(r=>`<article class="review-item"><div class="review-item-top"><div class="review-author"><span class="review-avatar" aria-hidden="true">${r.name[0]}</span><div><strong>${r.name}</strong><span class="review-meta">Fictional reviewer · ${formatDate(r.date)}</span></div></div><span class="review-comment-stars">${reviewStars(r.stars)}</span></div><h3>${r.title}</h3><p>${r.body}</p></article>`).join(''):'<div class="review-empty">No sample reviews match that filter. Try another rating.</div>';
+    };
+    filter.addEventListener('change',render);sort.addEventListener('change',render);render();
+  };
+
   const productPage=()=>{
     const id=new URLSearchParams(location.search).get('id');const p=byId[id]||products[0];document.title=p.name+' | CozyNest Home';document.querySelector('#crumb-product').textContent=p.name;
-    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" alt="${p.name} — enlarged product view" src="${p.image}"><div class="thumbs"><img class="thumb" src="${p.image}" alt="${p.name} thumbnail"></div><p class="light small">Original illustrated product imagery for this classroom demonstration.</p></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><span class="stars">★★★★★</span> &nbsp; ${p.rating.toFixed(1)} (${p.reviews} fictional reviews)</div><div class="detail-price">${p.old?`<span class="was">${money(p.old)}</span> &nbsp;`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s} — ${p.sizes[s]}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color</label><select id="product-color">${[p.color,'Sand','Ivory','Slate'].filter((v,i,a)=>a.indexOf(v)===i).map(c=>`<option>${c}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Simulated free shipping &nbsp; ✓ Fictional products &nbsp; ✓ No purchase possible</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home (fictional)</td></tr></tbody></table></div></section>`;
+    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" alt="${p.name} — enlarged product view" src="${p.image}"><div class="thumbs"><img class="thumb" src="${p.image}" alt="${p.name} thumbnail"></div><p class="light small">Original illustrated product imagery for this classroom demonstration.</p></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to sample customer comments"><span class="stars">★★★★★</span> &nbsp; ${p.rating.toFixed(1)} (${p.reviews} fictional ratings) · Read comments ↓</a></div><div class="detail-price">${p.old?`<span class="was">${money(p.old)}</span> &nbsp;`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s} — ${p.sizes[s]}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color</label><select id="product-color">${[p.color,'Sand','Ivory','Slate'].filter((v,i,a)=>a.indexOf(v)===i).map(c=>`<option>${c}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Simulated free shipping &nbsp; ✓ Fictional products &nbsp; ✓ No purchase possible</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home (fictional)</td></tr></tbody></table></div></section>`;
     // Keep the product-page total and button in sync with the selected quantity.
     const qtySelect=document.querySelector('#product-qty');
     const updateSelectedTotal=()=>{
@@ -61,6 +393,9 @@
     qtySelect.addEventListener('change',updateSelectedTotal);
     updateSelectedTotal();
     document.querySelector('#add-to-bag').addEventListener('click',()=>{const size=document.querySelector('#product-size').value,color=document.querySelector('#product-color').value,qty=Number(qtySelect.value);const c=cart(),item=c.find(x=>x.id===p.id&&x.size===size&&x.color===color);if(item)item.qty=Math.min(99,item.qty+qty);else c.push({id:p.id,size,color,qty});saveCart(c);toast(`${p.name} added to your demo bag`)});
+    document.querySelector('#product-detail').insertAdjacentHTML('afterend',reviewSection(p));
+    setupReviews(p);
+    if(location.hash==='#customer-reviews') requestAnimationFrame(()=>document.getElementById('customer-reviews')?.scrollIntoView({block:'start'}));
     document.querySelector('#related-grid').innerHTML=products.filter(x=>x.id!==p.id).slice(0,4).map(card).join('');
   };
   const subtotal=()=>cart().reduce((n,c)=>n+byId[c.id].price*c.qty,0);
