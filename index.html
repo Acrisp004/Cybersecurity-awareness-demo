@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typing Security Demonstration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      box-sizing: border-box;
+      margin-top: 15px;
+      padding: 12px;
+    }
+    button { padding: 10px; margin: 10px 5px 10px 0; }
+    .report { background: #eee; padding: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Typing Security Demonstration</h1>
+
+  <p>This educational demonstration observes text entered
+  into the practice box below. Nothing is sent to a server.
+  Do not enter real passwords or private information.</p>
+
+  <label>
+    <input type="checkbox" id="consent">
+    I agree to participate in this demonstration.
+  </label>
+
+  <div>
+    <button id="start" disabled>Start</button>
+    <button id="stop" disabled>Stop and Clear</button>
+    <button id="share" disabled>Copy My Results</button>
+  </div>
+
+  <p id="status">Demonstration not started.</p>
+
+  <textarea id="practice" disabled
+    placeholder="Type practice text here..."></textarea>
+
+  <div class="report">
+    <h2>Live Activity</h2>
+    <p>Characters in box: <span id="count">0</span></p>
+    <p>Editing actions: <span id="edits">0</span></p>
+    <p>Last activity: <span id="time">None</span></p>
+    <p>Practice text:</p>
+    <pre id="preview"></pre>
+  </div>
+
+  <script>
+    const consent = document.getElementById("consent");
+    const start = document.getElementById("start");
+    const stop = document.getElementById("stop");
+    const share = document.getElementById("share");
+    const practice = document.getElementById("practice");
+    const status = document.getElementById("status");
+
+    let edits = 0;
+
+    consent.addEventListener("change", () => {
+      start.disabled = !consent.checked;
+    });
+
+    start.addEventListener("click", () => {
+      practice.disabled = false;
+      stop.disabled = false;
+      share.disabled = false;
+      start.disabled = true;
+      consent.disabled = true;
+      status.textContent = "Demo active: practice box only.";
+      practice.focus();
+    });
+
+    practice.addEventListener("input", () => {
+      edits++;
+      document.getElementById("count").textContent =
+        practice.value.length;
+      document.getElementById("edits").textContent = edits;
+      document.getElementById("time").textContent =
+        new Date().toLocaleTimeString();
+      document.getElementById("preview").textContent =
+        practice.value;
+    });
+
+    share.addEventListener("click", async () => {
+      const report =
+        "Typing awareness demo\n" +
+        "Characters: " + practice.value.length + "\n" +
+        "Editing actions: " + edits + "\n" +
+        "Practice text: " + practice.value;
+
+      try {
+        await navigator.clipboard.writeText(report);
+        status.textContent =
+          "Results copied. You can choose to share them.";
+      } catch {
+        status.textContent =
+          "Copy unavailable. You can show the results on screen.";
+      }
+    });
+
+    stop.addEventListener("click", () => {
+      practice.value = "";
+      practice.disabled = true;
+      document.getElementById("preview").textContent = "";
+      document.getElementById("count").textContent = "0";
+      document.getElementById("edits").textContent = "0";
+      document.getElementById("time").textContent = "None";
+      edits = 0;
+      stop.disabled = true;
+      share.disabled = true;
+      consent.checked = false;
+      consent.disabled = false;
+      start.disabled = true;
+      status.textContent = "Demo stopped and cleared.";
+    });
+  </script>
+</body>
+</html>
+
+
