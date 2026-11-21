@@ -938,7 +938,116 @@
       stars:[5,4,3][i],title,body
     }));
   });
-  const ratingFor = p => { const r=sampleReviews[p.id]||[]; return r.length ? (r.reduce((total,x)=>total+x.stars,0)/r.length).toFixed(1) : p.rating.toFixed(1); };
+  // Classroom sample data: the metric totals are illustrative, not verified customer ratings.
+  // Every detailed comment below is generated locally for this static training storefront.
+  const ratingMetrics = {
+    'thermasoft':2537, 'haven-quilt':1320, 'cloudloft':3014,
+    'willow-coverlet':986, 'ultraplush':1941, 'meadow-bloom':743,
+    'knitluxe':1276, 'evercozy':428, 'fireside':2246,
+    'aurora':684, 'cedar-ridge':585, 'aspen':1189,
+    'harbor':376, 'briar':712, 'rosewood':498,
+    'luna':1437, 'alpine-shams':284
+  };
+  const reviewNames = [
+    'Alex','Avery','Blair','Cameron','Casey','Charlie','Dakota','Dana','Drew','Eden',
+    'Ellis','Emery','Finley','Frankie','Harper','Hayden','Jamie','Jesse','Jordan','Kai',
+    'Kelly','Kendall','Lane','Logan','Marlowe','Morgan','Nico','Parker','Quinn','Reese',
+    'Remy','Riley','Robin','Rowan','Sage','Sam','Shiloh','Skyler','Taylor','Terry'
+  ];
+  const reviewTitles = {
+    5:['Super cozy','Exactly the texture I wanted','Lovely color and finish','Great addition to the room','Comfortable and attractive','Better than expected','Happy with the size','A cozy favorite'],
+    4:['Very nice, one small detail','Good for everyday use','Pretty and practical','Soft with a minor caveat','Nice quality for the price','Looks great on the bed','Would consider another color','A solid choice'],
+    3:['A few things to consider','Check the measurements','Color looks different in person','Comfortable but not perfect','Mixed feelings about the fit','Good enough for occasional use'],
+    2:['Not quite the right fit','I expected a different feel','Not ideal for my space','Would choose a different size'],
+    1:['Not what I was looking for','Did not suit my needs']
+  };
+  const reviewOpeners = {
+    5:['I really like the finish on this piece.','The texture feels nice and looks thoughtful.','It makes the room feel much cozier.','I was pleasantly surprised by how soft the fabric feels.','The styling fits my room better than I expected.','The material has a comfortable feel.','I like the way the stitching looks up close.','The fabric and shape work well with my other bedding.'],
+    4:['Overall I like the fabric and finish.','It looks good in the room and feels comfortable.','The color works well with my bedding.','I am pleased with the texture overall.','The design is attractive without being too busy.','It feels cozy and the stitching is neat.','A practical piece with a nice soft finish.','It is a good match for my everyday bedding.'],
+    3:['The material is comfortable, but I have some reservations.','It looks nice from a distance, though some details surprised me.','The texture is softer than expected, but the fit is not ideal.','The color is pleasant, although it differs a bit from the photo.','I like the basic design, but would check measurements carefully.','This one works fine, though it was not quite what I pictured.'],
+    2:['The piece did not fit my setup as well as I expected.','I wanted to like the texture more than I did.','The shade was not quite what I had in mind.','The dimensions felt awkward for my space.'],
+    1:['The design simply was not right for my room.','It did not match the fabric feel I was looking for.']
+  };
+  const reviewDetail = {
+    heated:[
+      'The lower heat setting seems useful for chilly evenings.','The controller location is easy to find while relaxing.','I would plan where the power cord goes before putting it on the bed.','It has a substantial feel without looking bulky.','I like the quilted texture on top of plain sheets.','The fabric feels pleasant against a light cotton sheet.','The controller takes a little space next to the bed.','The cord placement is worth checking before ordering.','It is a nice option for reading in the evening.','I would check the size chart before buying for a shared bed.'
+    ],
+    throw:[
+      'The drape works well on the back of my couch.','The throw size is comfortable for one person.','The texture adds interest to a simple armchair.','I prefer a larger throw when two people share the couch.','It folds easily when not in use.','The soft finish is the part I like most.','The edges look nicely finished.','It looks good layered with neutral cushions.','I like it as an extra layer on cooler evenings.','I would check the throw dimensions before ordering.'
+    ],
+    quilt:[
+      'The stitching gives the bed a tidy look.','It is light enough to use as an extra layer.','The pattern is subtle next to plain pillowcases.','I would add a thicker blanket for colder nights.','The matching shams give the bed a finished look.','The quilt folds nicely at the foot of the bed.','The texture is pretty without being too bold.','It is worth checking the measurements for a deep mattress.','The fabric works with several neutral colors.','The cover feels easy to layer with other bedding.'
+    ],
+    coverlet:[
+      'The texture looks especially good in natural light.','It gives the bed a clean and simple finish.','The coverlet is best as a light layer.','I would use a thicker blanket underneath in winter.','The subtle pattern adds dimension without extra color.','The edges look neat when tucked in.','It is easy to coordinate with other pillow colors.','The fit depends on how much overhang you like.','I like the way it looks folded at the foot of the bed.','The fabric is lighter than a heavy quilt.'
+    ],
+    gift:[
+      'The coordinated pieces make styling easier.','The colors look good together on the bed.','It is helpful to have the matching shams included.','I would double-check exactly which pieces come with the set.','It gives the room a pulled-together look.','The layers are easy to mix with existing sheets.','I like the soft neutral color choices.','The bundle works especially well for a guest bedroom.','It is worth comparing the bundle sizes.','The textures complement each other nicely.'
+    ],
+    sham:[
+      'The stitched fabric gives pillows a finished look.','I would measure the pillow inserts first.','The texture pairs nicely with plain bedding.','The seams look tidy around the edges.','The color is easy to match with neutral sheets.','The covers work best with a full pillow insert.','I like the understated quilted pattern.','The set makes the bed look more coordinated.','The material is soft enough for a decorative sham.','Check the dimensions before choosing king size.'
+    ]
+  };
+  const reviewEndings = [
+    'I would compare the available sizes first.',
+    'The neutral colors are easy to work with.',
+    'It pairs nicely with the rest of my bedding.',
+    'I appreciate the simple styling.',
+    'The shape and texture make a difference.',
+    'I would look closely at the color swatches.',
+    'I like that the design is not too fussy.',
+    'The proportions worked well in my room.',
+    'It feels more like an everyday piece than a special-occasion one.',
+    'I would read the care instructions before washing.'
+  ];
+  const commentStars = (i,p,productIndex) => {
+    // Deterministic ratings weighted to the illustrated product average.
+    const roll=((i*37+productIndex*17)%100)/100;
+    const low1=.004,low2=.008,low3=(5-p.rating)*.1;
+    const five=(p.rating-4)+low3+2*low2+3*low1;
+    if(roll<five)return 5;
+    if(roll<1-low1-low2-low3)return 4;
+    if(roll<1-low1-low2)return 3;
+    if(roll<1-low1)return 2;
+    return 1;
+  };
+  products.forEach((p, productIndex) => {
+    const records=sampleReviews[p.id]||[];
+    const target=ratingMetrics[p.id]>=1000?100:50;
+    const detail=reviewDetail[p.type]||reviewDetail.quilt;
+    for(let i=records.length;i<target;i++){
+      const stars=commentStars(i,p,productIndex);
+      const titles=reviewTitles[stars];
+      const openers=reviewOpeners[stars];
+      const day=new Date(Date.UTC(2026,10,19)-(i*2+productIndex)*86400000);
+      const first=reviewNames[(i*13+productIndex*3)%reviewNames.length];
+      const initial=String.fromCharCode(65+((i*7+productIndex*5)%26));
+      const shade=p.colors[(i+productIndex)%p.colors.length].name;
+      const opener=openers[(i*3+Math.floor(i/6)+productIndex)%openers.length];
+      const specific=detail[(i*7+Math.floor(i/12)+productIndex)%detail.length];
+      const ending=reviewEndings[(i*9+Math.floor(i/8)+productIndex)%reviewEndings.length];
+      records.push({
+        name:`${first} ${initial}.`,
+        date:day.toISOString().slice(0,10),
+        stars,
+        title:titles[(i*5+productIndex)%titles.length],
+        body:`${opener} I chose ${shade} for the ${p.name.toLowerCase()}. ${specific} ${ending}`
+      });
+    }
+    sampleReviews[p.id]=records;
+  });
+  // Generate a synthetic distribution matching the published sample mean, not real purchases.
+  const ratingBreakdown = p => {
+    const total=ratingMetrics[p.id];
+    const c1=Math.round(total*.004),c2=Math.round(total*.008);
+    const c3=Math.round(total*(5-p.rating)*.1);
+    const c5=Math.round(total*(p.rating-4)+(c3+2*c2+3*c1));
+    const c4=Math.max(0,total-c1-c2-c3-c5);
+    return [c5,c4,c3,c2,c1].map((count,i)=>({stars:5-i,count}));
+  };
+  const ratingFor = p => Number(p.rating).toFixed(1);
+  const ratingText = p => `${ratingMetrics[p.id].toLocaleString('en-US')} ratings · ${sampleReviews[p.id].length} comments`;
+
   const byId = Object.fromEntries(products.map(p=>[p.id,p]));
   const key='cozynest-demo-cart-v1', wishKey='cozynest-demo-faves-v1';
   const money=n=>'$'+n.toFixed(2);
@@ -959,7 +1068,7 @@
   const swatchMarkup=(p,selected=p.colors[0].name,context='card')=>p.colors.map(({name,hex})=>
     `<button type="button" class="swatch-button ${name===selected?'selected':''}" style="--swatch:${hex}" data-${context}-color="${p.id}|${name}" aria-label="Show ${name} ${p.name}" aria-pressed="${name===selected}" title="${name}"></button>`
   ).join('');
-  const card=(p)=>`<article class="product-card" data-card-id="${p.id}"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a data-card-link href="product.html?id=${p.id}" aria-label="View ${p.name}"><img data-card-image src="${p.image}" alt="${p.name} in ${p.colors[0].name}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a data-card-link href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><a class="review-link" href="product.html?id=${p.id}#customer-reviews" aria-label="Read reviews for ${p.name}"><span class="stars">★</span> ${ratingFor(p)} &nbsp;(${(sampleReviews[p.id]||[]).length} reviews) <span aria-hidden="true">↗</span></a></div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" role="group" aria-label="${p.name} colors">${swatchMarkup(p)}</div><div class="card-color-name" data-card-color-name>Color: ${p.colors[0].name}</div></article>`;
+  const card=(p)=>`<article class="product-card" data-card-id="${p.id}"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a data-card-link href="product.html?id=${p.id}" aria-label="View ${p.name}"><img data-card-image src="${p.image}" alt="${p.name} in ${p.colors[0].name}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a data-card-link href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><a class="review-link" href="product.html?id=${p.id}#customer-reviews" aria-label="Read reviews for ${p.name}"><span class="stars">★</span> ${ratingFor(p)} &nbsp;(${ratingText(p)}) <span aria-hidden="true">↗</span></a></div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" role="group" aria-label="${p.name} colors">${swatchMarkup(p)}</div><div class="card-color-name" data-card-color-name>Color: ${p.colors[0].name}</div></article>`;
   const activateCardSwatches=()=>document.addEventListener('click',e=>{
     const sw=e.target.closest('[data-card-color]');if(!sw)return;
     const [id,name]=sw.dataset.cardColor.split('|');const p=byId[id];if(!p)return;
@@ -995,38 +1104,46 @@
 
   const reviewStars = count => `<span class="review-stars" aria-label="${count} out of 5 stars">${'★'.repeat(count)}<span class="star-empty">${'☆'.repeat(5-count)}</span></span>`;
   const reviewSection = p => {
-    const records = sampleReviews[p.id] || [];
-    const counts = [5,4,3,2,1].map(stars=>({stars,count:records.filter(r=>r.stars===stars).length}));
+    const records=sampleReviews[p.id]||[];
+    const counts=ratingBreakdown(p);
+    const allRatings=ratingMetrics[p.id];
     return `<section id="customer-reviews" class="reviews-section" aria-labelledby="reviews-heading">
-      <div class="reviews-heading"><div><p class="reviews-kicker">SHOPPING EXPERIENCE</p><h2 id="reviews-heading">Customer reviews</h2><p class="reviews-disclosure"><strong>Example reviews:</strong> These comments and ratings are invented for training and do not represent verified purchases or real customer experiences.</p></div></div>
-      <div class="reviews-overview"><div class="review-overall"><strong>${ratingFor(p)}</strong><span class="stars" aria-hidden="true">${"★".repeat(Math.round(Number(ratingFor(p))))}${"☆".repeat(5-Math.round(Number(ratingFor(p))))}</span><span>${records.length} example ratings</span><small>${records.length} comments below</small></div>
-      <div class="rating-breakdown" aria-label="Star ratings in the comments">${counts.map(c=>`<div class="rating-bar-row"><span>${c.stars} star</span><div class="rating-bar"><span style="width:${records.length?100*c.count/records.length:0}%"></span></div><span>${c.count}</span></div>`).join('')}</div></div>
-      <div class="reviews-toolbar"><strong><span id="review-visible-count">${records.length}</span> comments</strong><div class="review-controls"><label for="review-filter">Rating</label><select id="review-filter"><option value="all">All stars</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option></select><label for="review-sort">Sort by</label><select id="review-sort"><option value="recent">Most recent</option><option value="highest">Highest rating</option><option value="lowest">Lowest rating</option></select></div></div>
-      <div id="review-list" class="review-list" aria-live="polite"></div>
+      <div class="reviews-heading"><div><p class="reviews-kicker">PRODUCT FEEDBACK</p><h2 id="reviews-heading">Ratings & reviews</h2><p class="reviews-disclosure"><strong>Sample reviews for a training storefront.</strong> All ratings, reviewer names, and comments on this page are generated examples—not real customer feedback or verified purchases.</p></div></div>
+      <div class="reviews-overview"><div class="review-overall"><strong>${ratingFor(p)}</strong><span class="stars" aria-hidden="true">${'★'.repeat(Math.round(Number(ratingFor(p))))}${'☆'.repeat(5-Math.round(Number(ratingFor(p))))}</span><span>${allRatings.toLocaleString('en-US')} sample ratings</span><small>${records.length} sample written comments</small></div>
+      <div class="rating-breakdown" aria-label="Illustrative star ratings">${counts.map(c=>`<div class="rating-bar-row"><span>${c.stars} star</span><div class="rating-bar"><span style="width:${Math.round(100*c.count/allRatings)}%"></span></div><span>${c.count.toLocaleString('en-US')}</span></div>`).join('')}</div></div>
+      <div class="reviews-toolbar"><strong>Showing <span id="review-visible-count">10</span> of <span id="review-total-matches">${records.length}</span> comments</strong><div class="review-controls"><label for="review-filter">Rating</label><select id="review-filter"><option value="all">All stars</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select><label for="review-sort">Sort by</label><select id="review-sort"><option value="recent">Most recent</option><option value="highest">Highest rating</option><option value="lowest">Lowest rating</option></select></div></div>
+      <div id="review-list" class="review-list" aria-live="polite"></div><div class="reviews-more-wrap"><button type="button" id="review-more" class="outline">Show 10 more comments</button></div>
     </section>`;
   };
   const setupReviews = p => {
-    const root = document.getElementById('review-list');
-    const filter = document.getElementById('review-filter');
-    const sort = document.getElementById('review-sort');
-    const formatDate = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-    const render = () => {
-      let arr = [...(sampleReviews[p.id]||[])];
-      if(filter.value!=='all') arr=arr.filter(r=>r.stars===Number(filter.value));
-      if(sort.value==='highest') arr.sort((a,b)=>b.stars-a.stars||b.date.localeCompare(a.date));
-      if(sort.value==='lowest') arr.sort((a,b)=>a.stars-b.stars||b.date.localeCompare(a.date));
-      if(sort.value==='recent') arr.sort((a,b)=>b.date.localeCompare(a.date));
-      document.getElementById('review-visible-count').textContent=arr.length;
-      root.innerHTML=arr.length?arr.map(r=>`<article class="review-item"><div class="review-item-top"><div class="review-author"><span class="review-avatar" aria-hidden="true">${r.name[0]}</span><div><strong>${r.name}</strong><span class="review-meta">${formatDate(r.date)}</span></div></div><span class="review-comment-stars">${reviewStars(r.stars)}</span></div><h3>${r.title}</h3><p>${r.body}</p></article>`).join(''):'<div class="review-empty">No reviews match that filter. Try another rating.</div>';
+    const root=document.getElementById('review-list');
+    const filter=document.getElementById('review-filter');
+    const sort=document.getElementById('review-sort');
+    const more=document.getElementById('review-more');
+    let shown=10;
+    const formatDate=d=>new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+    const render=()=>{
+      let arr=[...(sampleReviews[p.id]||[])];
+      if(filter.value!=='all')arr=arr.filter(r=>r.stars===Number(filter.value));
+      if(sort.value==='highest')arr.sort((a,b)=>b.stars-a.stars||b.date.localeCompare(a.date));
+      if(sort.value==='lowest')arr.sort((a,b)=>a.stars-b.stars||b.date.localeCompare(a.date));
+      if(sort.value==='recent')arr.sort((a,b)=>b.date.localeCompare(a.date));
+      document.getElementById('review-visible-count').textContent=String(Math.min(shown,arr.length));
+      document.getElementById('review-total-matches').textContent=String(arr.length);
+      root.innerHTML=arr.length?arr.slice(0,shown).map(r=>`<article class="review-item"><div class="review-item-top"><div class="review-author"><span class="review-avatar" aria-hidden="true">${r.name[0]}</span><div><strong>${r.name}</strong><span class="review-meta">${formatDate(r.date)}</span></div></div><span class="review-comment-stars">${reviewStars(r.stars)}</span></div><h3>${r.title}</h3><p>${r.body}</p></article>`).join(''):'<div class="review-empty">No comments match this filter. Try another rating.</div>';
+      more.hidden=shown>=arr.length;
     };
-    filter.addEventListener('change',render);sort.addEventListener('change',render);render();
+    filter.addEventListener('change',()=>{shown=10;render()});
+    sort.addEventListener('change',()=>{shown=10;render()});
+    more.addEventListener('click',()=>{shown+=10;render()});
+    render();
   };
 
   const productPage=()=>{
     const id=new URLSearchParams(location.search).get('id');const p=byId[id]||products[0];document.title=p.name+' | CozyNest Home';document.querySelector('#crumb-product').textContent=p.name;
     const initialColor=new URLSearchParams(location.search).get('color');
     const selectedColor=p.colors.some(c=>c.name===initialColor)?initialColor:p.colors[0].name;
-    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" alt="${p.name} in ${selectedColor} — enlarged product view" src="${variantImage(p,selectedColor)}"><div class="thumbs"><img class="thumb" src="${variantImage(p,selectedColor)}" alt="${p.name} thumbnail"></div><p class="small light" id="visual-note">Selected color: ${selectedColor} — illustrated product color</p></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${(sampleReviews[p.id]||[]).length} reviews) · Read comments ↓</a></div><div class="detail-price">${p.old?`<span class="was">${money(p.old)}</span> &nbsp;`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s} — ${p.sizes[s]}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
+    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" alt="${p.name} in ${selectedColor} — enlarged product view" src="${variantImage(p,selectedColor)}"><div class="thumbs"><img class="thumb" src="${variantImage(p,selectedColor)}" alt="${p.name} thumbnail"></div><p class="small light" id="visual-note">Selected color: ${selectedColor} — illustrated product color</p></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${ratingText(p)}) · Read comments ↓</a></div><div class="detail-price">${p.old?`<span class="was">${money(p.old)}</span> &nbsp;`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s} — ${p.sizes[s]}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
     const colorSelect=document.querySelector('#product-color');
     const setColor=name=>{
       const variant=variantFor(p,name);
@@ -1063,7 +1180,7 @@
     document.querySelector('#related-grid').innerHTML=products.filter(x=>x.id!==p.id).slice(0,4).map(card).join('');
   };
   const subtotal=()=>cart().reduce((n,c)=>n+byId[c.id].price*c.qty,0);
-  const summary=(showButton=true)=>`<h2 style="font-family:var(--serif);margin-top:0">Order summary</h2><div class="summary-line"><span>Subtotal (${cart().reduce((n,c)=>n+c.qty,0)} items)</span><span>${money(subtotal())}</span></div><div class="summary-line"><span>Shipping</span><span>FREE</span></div><div class="summary-line"><span>Tax</span><span>$0.00</span></div><div class="summary-line total"><span>Total</span><span>${money(subtotal())}</span></div><p class="small light">No real purchase or shipment will occur.</p>${showButton?`<a href="checkout.html" class="solid full" style="display:block;text-align:center">Continue to checkout</a>`:''}`;
+  const summary=(showButton=true)=>`<h2 style="font-family:var(--serif);margin-top:0">Order summary</h2><div class="summary-line"><span>Subtotal (${cart().reduce((n,c)=>n+c.qty,0)} items)</span><span>${money(subtotal())}</span></div><div class="summary-line"><span>Shipping</span><span>FREE</span></div><div class="summary-line"><span>Tax</span><span>$0.00</span></div><div class="summary-line total"><span>Total</span><span>${money(subtotal())}</span></div><p class="small light">Training order summary · no charges or deliveries</p>${showButton?`<a href="checkout.html" class="solid full" style="display:block;text-align:center">Continue to checkout</a>`:''}`;
   const cartPage=()=>{
     const c=cart(),root=document.querySelector('#cart-content');if(!c.length){root.innerHTML=`<div class="empty"><h2>Your bag is empty</h2><p>Browse the collection to find something you like.</p><a class="solid" href="index.html" style="display:inline-block;margin-top:10px">Shop the collection</a></div>`;return;}
     root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${variantImage(p,x.color)}" alt="${p.name} in ${x.color}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}</div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(p.price*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
@@ -1072,11 +1189,26 @@
   const checkoutPage=()=>{
     if(!cart().length){document.querySelector('.checkout-layout').innerHTML='<div class="empty"><h2>Your bag is empty.</h2><p>Please add an item before checking out.</p><a class="solid" style="display:inline-block" href="index.html">Go shopping</a></div>';return;}
     document.querySelector('#checkout-summary').innerHTML=summary(false)+`<div style="border-top:1px solid #ded1c8;padding-top:12px">${cart().map(x=>`<div class="summary-line"><span>${byId[x.id].name} × ${x.qty}<br><small>${x.size} / ${x.color}</small></span><strong>${money(byId[x.id].price*x.qty)}</strong></div>`).join('')}</div>`;
-    document.querySelectorAll('input[name="payment"]').forEach(r=>r.addEventListener('change',()=>document.querySelector('#card-last4').textContent=r.value==='demo-visa'?'4242':'4444'));
+    // These fields are read-only test fixtures; real card details are never requested or accepted.
+    document.querySelectorAll('input[name="payment"]').forEach(r=>r.addEventListener('change',()=>{
+      const visa=r.value==='demo-visa';
+      if (!r.checked) return;
+      document.querySelector('#demo-card-number').value=visa?'4242 4242 4242 4242':'5555 5555 5555 4444';
+      document.querySelector('#demo-card-expiry').value=visa?'12/30':'08/31';
+    }));
+    document.querySelector('#checkout-form').addEventListener('reset',()=>setTimeout(()=>{
+      document.querySelector('#demo-card-number').value='4242 4242 4242 4242';
+      document.querySelector('#demo-card-expiry').value='12/30';
+    },0));
     document.querySelector('#fill-demo').addEventListener('click',()=>{Object.entries({'demo-name':'Example Student','demo-email':'student@example.com','demo-phone':'402-555-0148','demo-street':'100 Example Avenue','demo-city':'Sample City','demo-state':'NE','demo-zip':'00000'}).forEach(([id,value])=>document.getElementById(id).value=value);document.querySelector('#dummy-only').checked=true;toast('Example details added')});
     document.querySelector('#checkout-form').addEventListener('submit',e=>{
       e.preventDefault();const f=e.currentTarget;const error=document.getElementById('checkout-error');error.style.display='none';
       if(!f.reportValidity())return;
+      const payment=document.querySelector('input[name="payment"]:checked').value;
+      const expected=payment==='demo-visa'?['4242 4242 4242 4242','12/30']:['5555 5555 5555 4444','08/31'];
+      if(document.getElementById('demo-card-number').value!==expected[0]||document.getElementById('demo-card-expiry').value!==expected[1]){
+        error.textContent='Only the displayed sample payment details are supported.';error.style.display='block';return;
+      }
       const mail=document.getElementById('demo-email').value.trim().toLowerCase();const phone=document.getElementById('demo-phone').value.replace(/\D/g,'');
       if(!mail.endsWith('@example.com')&&!mail.endsWith('@example.org')&&!mail.endsWith('@example.net')){error.textContent='Enter an example email ending in @example.com, @example.org or @example.net.';error.style.display='block';return;}
       if(!/^[0-9]{10,11}$/.test(phone)||!/55501[0-9]{2}$/.test(phone.slice(-7))){error.textContent='Use an example 555-01XX phone number, such as 402-555-0148.';error.style.display='block';return;}
