@@ -13,6 +13,611 @@
     {id:'evercozy',name:'EverCozy Bedding Gift Set',type:'gift',color:'Ivory',price:159,rating:4.9,reviews:'428',image:'evercozy.jpg',swatches:['#e7dbcd','#a5a5a2','#97a48d','#445066'],intro:'A thoughtful coordinated bundle featuring a plush heated blanket, a lightweight quilt and matching shams.',features:['Heated blanket included','Coordinated quilt and pillow shams','Gift-ready neutral palette','Mix-and-match styling'],material:'Polyester heated blanket with cotton-blend bedding',care:'Wash bedding separately; disconnect heating controller first.',sizes:{Queen:'Queen bedding bundle',King:'King bedding bundle'}}
   ];
 
+
+  // Additional sample product listings for the class store.
+  products.push(...[
+    {
+        "id": "fireside",
+        "name": "Fireside Luxe Heated Blanket",
+        "type": "heated",
+        "color": "Slate",
+        "price": 89,
+        "old": 269,
+        "rating": 4.6,
+        "reviews": "3",
+        "image": "fireside.jpg",
+        "sale": true,
+        "swatches": [
+            "#607180",
+            "#e9e1d5",
+            "#95a58c",
+            "#b78c91"
+        ],
+        "intro": "An inviting quilted heated blanket with six warmth settings and smooth, tailored stitching.",
+        "features": [
+            "Six temperature settings",
+            "Soft channel-stitched texture",
+            "Removable heat controller",
+            "For sofa or bed"
+        ],
+        "material": "Polyester microfiber",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Throw": "50 × 60 in",
+            "Twin": "62 × 84 in",
+            "Queen": "84 × 90 in"
+        }
+    },
+    {
+        "id": "aurora",
+        "name": "Aurora Sherpa Heated Throw",
+        "type": "throw",
+        "color": "Sage",
+        "price": 69,
+        "old": 189,
+        "rating": 4.7,
+        "reviews": "3",
+        "image": "aurora.jpg",
+        "sale": true,
+        "swatches": [
+            "#8fa28b",
+            "#e6ddce",
+            "#c79ea7",
+            "#5e5f64"
+        ],
+        "intro": "A cozy sherpa throw with a cloud-soft finish and soothing adjustable warmth.",
+        "features": [
+            "Plush sherpa pile",
+            "Three gentle warmth settings",
+            "Easy lounge-size silhouette",
+            "Removable controller"
+        ],
+        "material": "Polyester sherpa fleece",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Throw": "50 × 60 in"
+        }
+    },
+    {
+        "id": "cedar-ridge",
+        "name": "Cedar Ridge Quilted Bedspread",
+        "type": "quilt",
+        "color": "Sand",
+        "price": 129,
+        "old": 329,
+        "rating": 4.4,
+        "reviews": "3",
+        "image": "cedar-ridge.jpg",
+        "sale": true,
+        "swatches": [
+            "#c7b49d",
+            "#919b82",
+            "#e9e2d5",
+            "#728292"
+        ],
+        "intro": "A textured everyday quilt with comfortable layering weight and classic stitching.",
+        "features": [
+            "Detailed stitched pattern",
+            "Coordinated shams included",
+            "Machine washable",
+            "Year-round comfort"
+        ],
+        "material": "Cotton-blend quilted fabric",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Twin": "68 × 86 in",
+            "Queen": "90 × 92 in",
+            "King": "106 × 92 in"
+        }
+    },
+    {
+        "id": "aspen",
+        "name": "Aspen Plush Heated Blanket",
+        "type": "heated",
+        "color": "Mocha",
+        "price": 99,
+        "old": 299,
+        "rating": 4.7,
+        "reviews": "3",
+        "image": "aspen.jpg",
+        "sale": true,
+        "swatches": [
+            "#a58774",
+            "#eae0d4",
+            "#7d8998",
+            "#4a494f"
+        ],
+        "intro": "Rich, velvety fabric made for cool evenings with calming warmth and a cozy feel.",
+        "features": [
+            "Thick plush finish",
+            "Adjustable warming controls",
+            "Removable controller",
+            "Soft-touch surface"
+        ],
+        "material": "Polyester plush fleece",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Twin": "62 × 84 in",
+            "Queen": "84 × 90 in",
+            "King": "100 × 90 in"
+        }
+    },
+    {
+        "id": "harbor",
+        "name": "Harbor Waffle Coverlet Set",
+        "type": "coverlet",
+        "color": "Slate",
+        "price": 85,
+        "old": 249,
+        "rating": 4.5,
+        "reviews": "3",
+        "image": "harbor.jpg",
+        "sale": true,
+        "swatches": [
+            "#64768a",
+            "#e7dccd",
+            "#99a99a",
+            "#c4b29d"
+        ],
+        "intro": "A modern waffle-textured coverlet set that adds clean lines and cozy dimension.",
+        "features": [
+            "Subtle woven texture",
+            "Lightweight coverlet construction",
+            "Two matching shams with queen and king",
+            "Easy layering"
+        ],
+        "material": "Cotton-polyester blend",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Twin": "68 × 86 in",
+            "Queen": "90 × 90 in",
+            "King": "104 × 96 in"
+        }
+    },
+    {
+        "id": "briar",
+        "name": "Briar Garden Floral Quilt",
+        "type": "quilt",
+        "color": "Sage",
+        "price": 139,
+        "old": 359,
+        "rating": 4.6,
+        "reviews": "3",
+        "image": "briar.jpg",
+        "sale": true,
+        "swatches": [
+            "#8d9a83",
+            "#cdbfa8",
+            "#c59796",
+            "#eae0d4"
+        ],
+        "intro": "An airy botanical quilt with soft printed florals for relaxed bedroom styling.",
+        "features": [
+            "Botanical motif",
+            "Matching shams included",
+            "Lightweight fill",
+            "Delicate stitched details"
+        ],
+        "material": "Cotton-blend shell with light fill",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Twin": "68 × 86 in",
+            "Queen": "90 × 92 in",
+            "King": "106 × 92 in"
+        }
+    },
+    {
+        "id": "rosewood",
+        "name": "Rosewood Chunky Knit Throw",
+        "type": "throw",
+        "color": "Ivory",
+        "price": 45,
+        "old": 139,
+        "rating": 4.5,
+        "reviews": "3",
+        "image": "rosewood.jpg",
+        "sale": true,
+        "swatches": [
+            "#e6dfd1",
+            "#ba8a91",
+            "#a0ad98",
+            "#748092"
+        ],
+        "intro": "A beautifully textured knit-look throw for a comfortable seat or decorative layer.",
+        "features": [
+            "Chunky knit-inspired texture",
+            "Soft fringe edge",
+            "Great for layering",
+            "Couch-friendly dimensions"
+        ],
+        "material": "Soft polyester knit-look fleece",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Throw": "50 × 60 in"
+        }
+    },
+    {
+        "id": "luna",
+        "name": "Luna Cozy Bedding Bundle",
+        "type": "gift",
+        "color": "Slate",
+        "price": 189,
+        "old": 489,
+        "rating": 4.8,
+        "reviews": "3",
+        "image": "luna.jpg",
+        "sale": true,
+        "swatches": [
+            "#7f8c99",
+            "#e6ded3",
+            "#9dab98",
+            "#c7b8aa"
+        ],
+        "intro": "A beautifully coordinated bedding collection with quilt, shams and a plush heated layer.",
+        "features": [
+            "Matching quilt and shams",
+            "Heated blanket included",
+            "Coordinated soft hues",
+            "Bundle for a complete bed"
+        ],
+        "material": "Cotton-blend bedding and polyester heated layer",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Queen": "Queen bedding bundle",
+            "King": "King bedding bundle"
+        }
+    },
+    {
+        "id": "alpine-shams",
+        "name": "Alpine Quilted Pillow Sham Pair",
+        "type": "sham",
+        "color": "Ivory",
+        "price": 39,
+        "old": 119,
+        "rating": 4.5,
+        "reviews": "3",
+        "image": "alpine-shams.jpg",
+        "sale": true,
+        "swatches": [
+            "#e7dccf",
+            "#c9b79f",
+            "#a0aa97",
+            "#798799"
+        ],
+        "intro": "An easy way to give your pillows a crisp, quilted finish in understated colors.",
+        "features": [
+            "Two matching pillow shams",
+            "Tonal quilted finish",
+            "Soft hand feel",
+            "Simple bedroom styling"
+        ],
+        "material": "Cotton-polyester woven shell",
+        "care": "Machine wash cold where the care label permits; disconnect heat controllers before cleaning.",
+        "sizes": {
+            "Standard": "20 × 26 in",
+            "King": "20 × 36 in"
+        }
+    }
+]);
+  const colorPalettes = {
+  "thermasoft": [
+    [
+      "Ivory",
+      "#efe8dc"
+    ],
+    [
+      "Slate",
+      "#647487"
+    ],
+    [
+      "Sage",
+      "#99a792"
+    ],
+    [
+      "Mocha",
+      "#998474"
+    ]
+  ],
+  "haven-quilt": [
+    [
+      "Olive",
+      "#788364"
+    ],
+    [
+      "Sand",
+      "#c8b6a1"
+    ],
+    [
+      "Ivory",
+      "#ece3d5"
+    ],
+    [
+      "Slate",
+      "#778591"
+    ]
+  ],
+  "cloudloft": [
+    [
+      "Ivory",
+      "#f0e5d6"
+    ],
+    [
+      "Rose",
+      "#c28c99"
+    ],
+    [
+      "Sage",
+      "#98a68e"
+    ],
+    [
+      "Slate",
+      "#748191"
+    ]
+  ],
+  "willow-coverlet": [
+    [
+      "Ivory",
+      "#e4d8c9"
+    ],
+    [
+      "Sand",
+      "#c0a98f"
+    ],
+    [
+      "Sage",
+      "#91a28d"
+    ],
+    [
+      "Slate",
+      "#637587"
+    ]
+  ],
+  "ultraplush": [
+    [
+      "Charcoal",
+      "#48464b"
+    ],
+    [
+      "Mocha",
+      "#997e71"
+    ],
+    [
+      "Ivory",
+      "#e0d9ce"
+    ],
+    [
+      "Navy",
+      "#4c5972"
+    ]
+  ],
+  "meadow-bloom": [
+    [
+      "Floral",
+      "#d9c7b0"
+    ],
+    [
+      "Sage",
+      "#9ba98d"
+    ],
+    [
+      "Oatmeal",
+      "#caba9e"
+    ],
+    [
+      "Blush",
+      "#bd9295"
+    ]
+  ],
+  "knitluxe": [
+    [
+      "Rose",
+      "#bc858e"
+    ],
+    [
+      "Ivory",
+      "#e6dfd1"
+    ],
+    [
+      "Sage",
+      "#9bab98"
+    ],
+    [
+      "Charcoal",
+      "#555257"
+    ]
+  ],
+  "evercozy": [
+    [
+      "Ivory",
+      "#eadfd3"
+    ],
+    [
+      "Sand",
+      "#c8b59f"
+    ],
+    [
+      "Sage",
+      "#9eab96"
+    ],
+    [
+      "Slate",
+      "#718194"
+    ]
+  ],
+  "fireside": [
+    [
+      "Slate",
+      "#607180"
+    ],
+    [
+      "Ivory",
+      "#e9e1d5"
+    ],
+    [
+      "Sage",
+      "#95a58c"
+    ],
+    [
+      "Rose",
+      "#b78c91"
+    ]
+  ],
+  "aurora": [
+    [
+      "Sage",
+      "#8fa28b"
+    ],
+    [
+      "Ivory",
+      "#e6ddce"
+    ],
+    [
+      "Rose",
+      "#c79ea7"
+    ],
+    [
+      "Charcoal",
+      "#5e5f64"
+    ]
+  ],
+  "cedar-ridge": [
+    [
+      "Sand",
+      "#c7b49d"
+    ],
+    [
+      "Sage",
+      "#919b82"
+    ],
+    [
+      "Ivory",
+      "#e9e2d5"
+    ],
+    [
+      "Slate",
+      "#728292"
+    ]
+  ],
+  "aspen": [
+    [
+      "Mocha",
+      "#a58774"
+    ],
+    [
+      "Ivory",
+      "#eae0d4"
+    ],
+    [
+      "Slate",
+      "#7d8998"
+    ],
+    [
+      "Charcoal",
+      "#4a494f"
+    ]
+  ],
+  "harbor": [
+    [
+      "Slate",
+      "#64768a"
+    ],
+    [
+      "Ivory",
+      "#e7dccd"
+    ],
+    [
+      "Sage",
+      "#99a99a"
+    ],
+    [
+      "Sand",
+      "#c4b29d"
+    ]
+  ],
+  "briar": [
+    [
+      "Sage",
+      "#8d9a83"
+    ],
+    [
+      "Oatmeal",
+      "#cdbfa8"
+    ],
+    [
+      "Blush",
+      "#c59796"
+    ],
+    [
+      "Ivory",
+      "#eae0d4"
+    ]
+  ],
+  "rosewood": [
+    [
+      "Ivory",
+      "#e6dfd1"
+    ],
+    [
+      "Rose",
+      "#ba8a91"
+    ],
+    [
+      "Sage",
+      "#a0ad98"
+    ],
+    [
+      "Slate",
+      "#748092"
+    ]
+  ],
+  "luna": [
+    [
+      "Slate",
+      "#7f8c99"
+    ],
+    [
+      "Ivory",
+      "#e6ded3"
+    ],
+    [
+      "Sage",
+      "#9dab98"
+    ],
+    [
+      "Sand",
+      "#c7b8aa"
+    ]
+  ],
+  "alpine-shams": [
+    [
+      "Ivory",
+      "#e7dccf"
+    ],
+    [
+      "Sand",
+      "#c9b79f"
+    ],
+    [
+      "Sage",
+      "#a0aa97"
+    ],
+    [
+      "Slate",
+      "#798799"
+    ]
+  ]
+};
+  const colorSlug = str => str.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  products.forEach(p => {
+    p.colors=(colorPalettes[p.id]||[[p.color,'#e5ddd2']]).map(([name,hex],i)=>({
+      name,hex,image:i===0?p.image:`${p.id}-${colorSlug(name)}.jpg`
+    }));
+    p.old = {"thermasoft": 299, "haven-quilt": 279, "cloudloft": 139, "willow-coverlet": 259, "ultraplush": 399, "meadow-bloom": 289, "knitluxe": 119, "evercozy": 429}[p.id] || p.old;
+    // Keep a mix of sale prices and regular prices so the Deals filter is meaningful.
+    const saleIds=['thermasoft','cloudloft','ultraplush','knitluxe','evercozy','fireside','aurora','aspen','harbor','rosewood','luna'];
+    if (!saleIds.includes(p.id)) p.old = null;
+    p.sale = typeof p.old === 'number' && p.old > p.price;
+  });
   // Fictional examples for a classroom demo. No visitors can submit reviews.
   const sampleReviews = {
   "thermasoft": [
@@ -313,6 +918,26 @@
   ]
 };
 
+
+  // Sample comments for additional products (not submitted by customers).
+  const reviewSeeds = {
+    "fireside": [["Comfortable addition", "The fireside luxe heated blanket looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the slate color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "aurora": [["Comfortable addition", "The aurora sherpa heated throw looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the sage color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "cedar-ridge": [["Comfortable addition", "The cedar ridge quilted bedspread looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the sand color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "aspen": [["Comfortable addition", "The aspen plush heated blanket looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the mocha color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "harbor": [["Comfortable addition", "The harbor waffle coverlet set looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the slate color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "briar": [["Comfortable addition", "The briar garden floral quilt looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the sage color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "rosewood": [["Comfortable addition", "The rosewood chunky knit throw looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the ivory color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "luna": [["Comfortable addition", "The luna cozy bedding bundle looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the slate color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+    "alpine-shams": [["Comfortable addition", "The alpine quilted pillow sham pair looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the ivory color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
+  };
+  Object.entries(reviewSeeds).forEach(([id,items])=>{
+    sampleReviews[id] = items.map(([title,body],i)=>({
+      name:['Alex P.','Morgan R.','Jamie S.'][i],
+      date:['2026-11-04','2026-10-11','2026-09-18'][i],
+      stars:[5,4,3][i],title,body
+    }));
+  });
   const ratingFor = p => { const r=sampleReviews[p.id]||[]; return r.length ? (r.reduce((total,x)=>total+x.stars,0)/r.length).toFixed(1) : p.rating.toFixed(1); };
   const byId = Object.fromEntries(products.map(p=>[p.id,p]));
   const key='cozynest-demo-cart-v1', wishKey='cozynest-demo-faves-v1';
@@ -324,28 +949,46 @@
   const renderCount=()=>document.querySelectorAll('[data-cart-count]').forEach(e=>e.textContent=String(cart().reduce((n,c)=>n+c.qty,0)));
   const html = s=>s; // Products are static, not user-supplied HTML.
   const toast = msg=>{document.querySelector('.toast')?.remove();const e=document.createElement('div');e.className='toast';e.role='status';e.textContent=msg;document.body.append(e);setTimeout(()=>e.remove(),2700)};
-  const siteHeader=()=>{document.querySelector('#site-header').innerHTML=`<div class="promo">Soft layers. Cozy spaces. &nbsp; ✦ &nbsp; Some favorites are on sale now!</div><div class="safety">TRAINING STORE · Example products and reviews · No real orders or payments</div><header class="header"><a href="index.html" class="logo" aria-label="CozyNest Home">⌂ <span>CozyNest Home</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">New Arrivals</a><a href="index.html?sort=rating">Best Sellers</a><a href="index.html?category=heated">Heated Blankets</a><a href="index.html?category=quilt">Quilts</a><a href="index.html?category=throw">Throws</a><a href="index.html?category=coverlet">Bedroom</a><a href="index.html?category=gift">Gifts</a><a href="index.html?deals=sale" class="sale-link">On Sale</a></nav><div class="actions"><form id="header-search" role="search" class="searchbar"><span aria-hidden="true">⌕</span><input id="search-input" aria-label="Search products" type="search" placeholder="Search cozy bedding..."></form><a class="iconlink" href="cart.html" title="Shopping bag" aria-label="Shopping bag">♧<span class="counter" data-cart-count>0</span></a></div></header><hr class="divider">`;
+  const siteHeader=()=>{document.querySelector('#site-header').innerHTML=`<div class="promo">Soft layers. Cozy spaces. &nbsp; ✦ &nbsp; Some favorites are on sale now!</div><div class="safety">TRAINING STOREFRONT · Sample products, prices and reviews · No actual orders or payments</div><header class="header"><a href="index.html" class="logo" aria-label="CozyNest Home">⌂ <span>CozyNest Home</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">New Arrivals</a><a href="index.html?sort=rating">Best Sellers</a><a href="index.html?category=heated">Heated Blankets</a><a href="index.html?category=quilt">Quilts</a><a href="index.html?category=throw">Throws</a><a href="index.html?category=coverlet">Bedroom</a><a href="index.html?category=gift">Gifts</a><a href="index.html?deals=sale" class="sale-link">On Sale</a></nav><div class="actions"><form id="header-search" role="search" class="searchbar"><span aria-hidden="true">⌕</span><input id="search-input" aria-label="Search products" type="search" placeholder="Search cozy bedding..."></form><a class="iconlink" href="cart.html" title="Shopping bag" aria-label="Shopping bag">♧<span class="counter" data-cart-count>0</span></a></div></header><hr class="divider">`;
     document.querySelector('#header-search').addEventListener('submit',e=>{e.preventDefault();const q=document.querySelector('#search-input').value.trim();window.location.href='index.html?search='+encodeURIComponent(q)});
     renderCount();
   };
-  const siteFooter=()=>document.querySelector('#site-footer').innerHTML=`<footer class="footer"><div class="footer-inner"><div class="footer-item"><span class="footer-icon">☎</span><div><strong>Phone</strong><br>(402) 555-0187<br>(402) 555-0142</div></div><div class="footer-item"><span class="footer-icon">◷</span><div><strong>Store Hours</strong><br>Mon–Fri 9 AM–7 PM<br>Sat 10 AM–6 PM · Sun 12 PM–5 PM</div></div><div class="footer-item"><span class="footer-icon">⌖</span><div><strong>Store Location</strong><br>1847 Willow Creek Lane<br>Lincoln, NE 68508</div></div><div class="footer-item"><span class="footer-icon">✉</span><div><strong>Email</strong><br>hello@cozynesthome.example</div></div></div><div class="footer-note">© 2026 CozyNest Home</div></footer>`;
-  const card=(p)=>`<article class="product-card"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a href="product.html?id=${p.id}" aria-label="View ${p.name}"><img src="${p.image}" alt="${p.name}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><a class="review-link" href="product.html?id=${p.id}#customer-reviews" aria-label="Read reviews for ${p.name}"><span class="stars">★</span> ${ratingFor(p)} &nbsp;(${(sampleReviews[p.id]||[]).length} reviews) <span aria-hidden="true">↗</span></a></div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" aria-label="Available color choices">${p.swatches.map(c=>`<span class="swatch" style="background:${c}"></span>`).join('')}</div></article>`;
+  const siteFooter=()=>document.querySelector('#site-footer').innerHTML=`<footer class="footer"><div class="footer-inner"><div class="footer-item"><span class="footer-icon">☎</span><div><strong>Phone</strong><br>(402) 555-0187<br>(402) 555-0142</div></div><div class="footer-item"><span class="footer-icon">◷</span><div><strong>Store Hours</strong><br>Mon–Fri 9 AM–7 PM<br>Sat 10 AM–6 PM · Sun 12 PM–5 PM</div></div><div class="footer-item"><span class="footer-icon">⌖</span><div><strong>Store Location</strong><br>1847 Willow Creek Lane<br>Lincoln, NE 68508</div></div><div class="footer-item"><span class="footer-icon">✉</span><div><strong>Email</strong><br>Cozynesthome@gmail.com</div></div></div><div class="footer-note">© 2026 CozyNest Home</div></footer>`;
+  const variantFor=(p,name)=>p.colors.find(c=>c.name===name)||p.colors[0];
+  const variantImage=(p,name)=>variantFor(p,name).image;
+  const swatchMarkup=(p,selected=p.colors[0].name,context='card')=>p.colors.map(({name,hex})=>
+    `<button type="button" class="swatch-button ${name===selected?'selected':''}" style="--swatch:${hex}" data-${context}-color="${p.id}|${name}" aria-label="Show ${name} ${p.name}" aria-pressed="${name===selected}" title="${name}"></button>`
+  ).join('');
+  const card=(p)=>`<article class="product-card" data-card-id="${p.id}"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a data-card-link href="product.html?id=${p.id}" aria-label="View ${p.name}"><img data-card-image src="${p.image}" alt="${p.name} in ${p.colors[0].name}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a data-card-link href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><a class="review-link" href="product.html?id=${p.id}#customer-reviews" aria-label="Read reviews for ${p.name}"><span class="stars">★</span> ${ratingFor(p)} &nbsp;(${(sampleReviews[p.id]||[]).length} reviews) <span aria-hidden="true">↗</span></a></div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" role="group" aria-label="${p.name} colors">${swatchMarkup(p)}</div><div class="card-color-name" data-card-color-name>Color: ${p.colors[0].name}</div></article>`;
+  const activateCardSwatches=()=>document.addEventListener('click',e=>{
+    const sw=e.target.closest('[data-card-color]');if(!sw)return;
+    const [id,name]=sw.dataset.cardColor.split('|');const p=byId[id];if(!p)return;
+    const cardEl=sw.closest('[data-card-id]');const v=variantFor(p,name);
+    cardEl.querySelector('[data-card-image]').src=v.image;
+    cardEl.querySelector('[data-card-image]').alt=`${p.name} in ${name}`;
+    cardEl.querySelectorAll('[data-card-link]').forEach(a=>a.href=`product.html?id=${encodeURIComponent(p.id)}&color=${encodeURIComponent(name)}`);
+    cardEl.querySelector('[data-card-color-name]').textContent=`Color: ${name}`;
+    cardEl.querySelectorAll('[data-card-color]').forEach(button=>{let selected=button===sw;button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));});
+  });
   const favoritesHandler=()=>document.addEventListener('click',e=>{const btn=e.target.closest('[data-favorite]');if(!btn)return;const id=btn.dataset.favorite;const f=favorites();const next=f.includes(id)?f.filter(x=>x!==id):[...f,id];localStorage.setItem(wishKey,JSON.stringify(next));document.querySelectorAll(`[data-favorite="${id}"]`).forEach(b=>{b.classList.toggle('active',next.includes(id));b.textContent=next.includes(id)?'♥':'♡'});toast(next.includes(id)?'Saved to favorites':'Removed from favorites')});
   const home=()=>{
     const cats=[['all','All','cat-all.png'],['heated','Heated Blankets','cat-heated.png'],['quilt','Quilts','cat-quilts.png'],['throw','Throws','cat-throws.png'],['coverlet','Coverlets','cat-coverlets.png'],['gift','Gift Sets','cat-gifts.png'],['sham','Shams','cat-shams.png']];
     const params=new URLSearchParams(location.search);const initialType=params.get('category')||'all';const tf=document.querySelector('#type-filter');if([...tf.options].some(o=>o.value===initialType))tf.value=initialType;
+    const colorFilter=document.querySelector('#color-filter');
+    const uniqueColors=[...new Set(products.flatMap(p=>p.colors.map(c=>c.name)))].sort();
+    colorFilter.innerHTML='<option value="all">All colors</option>'+uniqueColors.map(name=>`<option value="${name}">${name}</option>`).join('');
     if(params.get('deals')==='sale')document.querySelector('#deal-filter').value='sale';
     if(['price-low','price-high','rating'].includes(params.get('sort')))document.querySelector('#sort-filter').value=params.get('sort');
     if(params.has('search'))document.querySelector('#search-input').value=params.get('search');
     const render=()=>{
       const type=tf.value,color=document.querySelector('#color-filter').value,price=document.querySelector('#price-filter').value,deal=document.querySelector('#deal-filter').value,sort=document.querySelector('#sort-filter').value,q=document.querySelector('#search-input').value.trim().toLowerCase();
-      let arr=products.filter(p=>(type==='all'||p.type===type)&&(color==='all'||p.color===color)&&(deal==='all'||p.sale)&&(!q||p.name.toLowerCase().includes(q)||p.intro.toLowerCase().includes(q)));
+      let arr=products.filter(p=>(type==='all'||p.type===type)&&(color==='all'||p.colors.some(c=>c.name===color))&&(deal==='all'||p.sale)&&(!q||p.name.toLowerCase().includes(q)||p.intro.toLowerCase().includes(q)));
       if(price!=='all'){const [low,high]=price.split('-').map(Number);arr=arr.filter(p=>p.price>=low&&p.price<(high===999?1000:high));}
       if(sort==='price-low')arr.sort((a,b)=>a.price-b.price);if(sort==='price-high')arr.sort((a,b)=>b.price-a.price);if(sort==='rating')arr.sort((a,b)=>Number(ratingFor(b))-Number(ratingFor(a)));
       document.querySelector('#product-grid').innerHTML=arr.map(card).join('');document.querySelector('#result-count').textContent=arr.length+' product'+(arr.length===1?'':'s');document.querySelector('#no-results').style.display=arr.length?'none':'block';
       document.querySelector('#categories').innerHTML=cats.map(([id,name,img])=>`<button class="category ${id===type?'active':''}" data-category="${id}" aria-pressed="${id===type}"><img src="${img}" alt=""><span>${name}</span></button>`).join('');
     };
-    document.querySelector('#categories').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;tf.value=b.dataset.category==='sham'?'all':b.dataset.category;render()});
+    document.querySelector('#categories').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;tf.value=b.dataset.category;render()});
     ['type-filter','color-filter','price-filter','deal-filter','sort-filter'].forEach(id=>document.getElementById(id).addEventListener('change',render));
     document.querySelector('#search-input').addEventListener('input',render);render();
   };
@@ -381,7 +1024,28 @@
 
   const productPage=()=>{
     const id=new URLSearchParams(location.search).get('id');const p=byId[id]||products[0];document.title=p.name+' | CozyNest Home';document.querySelector('#crumb-product').textContent=p.name;
-    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" alt="${p.name} — enlarged product view" src="${p.image}"><div class="thumbs"><img class="thumb" src="${p.image}" alt="${p.name} thumbnail"></div></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${(sampleReviews[p.id]||[]).length} reviews) · Read comments ↓</a></div><div class="detail-price">${p.old?`<span class="was">${money(p.old)}</span> &nbsp;`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s} — ${p.sizes[s]}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color</label><select id="product-color">${[p.color,'Sand','Ivory','Slate'].filter((v,i,a)=>a.indexOf(v)===i).map(c=>`<option>${c}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
+    const initialColor=new URLSearchParams(location.search).get('color');
+    const selectedColor=p.colors.some(c=>c.name===initialColor)?initialColor:p.colors[0].name;
+    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" alt="${p.name} in ${selectedColor} — enlarged product view" src="${variantImage(p,selectedColor)}"><div class="thumbs"><img class="thumb" src="${variantImage(p,selectedColor)}" alt="${p.name} thumbnail"></div><p class="small light" id="visual-note">Selected color: ${selectedColor} — illustrated product color</p></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${(sampleReviews[p.id]||[]).length} reviews) · Read comments ↓</a></div><div class="detail-price">${p.old?`<span class="was">${money(p.old)}</span> &nbsp;`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s} — ${p.sizes[s]}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
+    const colorSelect=document.querySelector('#product-color');
+    const setColor=name=>{
+      const variant=variantFor(p,name);
+      colorSelect.value=variant.name;
+      document.querySelector('.large-image').src=variant.image;
+      document.querySelector('.large-image').alt=`${p.name} in ${variant.name}`;
+      document.querySelector('.thumb').src=variant.image;
+      document.querySelector('#selected-color-name').textContent=variant.name;
+      document.querySelector('#visual-note').textContent=`Selected color: ${variant.name} — illustrated product color`;
+      document.querySelectorAll('[data-detail-color]').forEach(button=>{
+        const active=button.dataset.detailColor===`${p.id}|${variant.name}`;
+        button.classList.toggle('selected',active);button.setAttribute('aria-pressed',String(active));
+      });
+    };
+    document.querySelector('#detail-swatches').addEventListener('click',e=>{
+      const button=e.target.closest('[data-detail-color]');if(!button)return;
+      setColor(button.dataset.detailColor.split('|')[1]);
+    });
+    colorSelect.addEventListener('change',()=>setColor(colorSelect.value));
     // Keep the product-page total and button in sync with the selected quantity.
     const qtySelect=document.querySelector('#product-qty');
     const updateSelectedTotal=()=>{
@@ -402,7 +1066,7 @@
   const summary=(showButton=true)=>`<h2 style="font-family:var(--serif);margin-top:0">Order summary</h2><div class="summary-line"><span>Subtotal (${cart().reduce((n,c)=>n+c.qty,0)} items)</span><span>${money(subtotal())}</span></div><div class="summary-line"><span>Shipping</span><span>FREE</span></div><div class="summary-line"><span>Tax</span><span>$0.00</span></div><div class="summary-line total"><span>Total</span><span>${money(subtotal())}</span></div><p class="small light">No real purchase or shipment will occur.</p>${showButton?`<a href="checkout.html" class="solid full" style="display:block;text-align:center">Continue to checkout</a>`:''}`;
   const cartPage=()=>{
     const c=cart(),root=document.querySelector('#cart-content');if(!c.length){root.innerHTML=`<div class="empty"><h2>Your bag is empty</h2><p>Browse the collection to find something you like.</p><a class="solid" href="index.html" style="display:inline-block;margin-top:10px">Shop the collection</a></div>`;return;}
-    root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${p.image}" alt="${p.name}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}</div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(p.price*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
+    root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${variantImage(p,x.color)}" alt="${p.name} in ${x.color}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}</div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(p.price*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
     root.querySelectorAll('[data-action]').forEach(btn=>btn.addEventListener('click',()=>{const current=cart(),idx=Number(btn.dataset.index);if(!current[idx])return;switch(btn.dataset.action){case 'more':current[idx].qty=Math.min(current[idx].qty+1,10);break;case 'less':current[idx].qty--;break;case 'remove':current.splice(idx,1);break;}saveCart(current.filter(x=>x.qty>0));cartPage()}));
   };
   const checkoutPage=()=>{
@@ -423,6 +1087,6 @@
   };
   const confirmation=()=>{const o=loadSessionOrder();document.querySelector('#confirm-content').innerHTML=o?`<div class="success"><div class="check-round">✓</div><h1 class="page-title" style="margin-top:20px">Checkout completed</h1><p class="subtitle" style="margin:14px 0">This was a training checkout. No purchase was placed, no payment was charged, and nothing will ship.</p><div class="summary" style="text-align:left;margin:25px auto;max-width:430px"><div class="summary-line"><span>Order reference</span><strong>${o.id}</strong></div><div class="summary-line"><span>Items</span><span>${o.itemCount}</span></div><div class="summary-line"><span>Displayed total</span><strong>${money(o.total)}</strong></div><div class="summary-line"><span>Actual charge</span><strong>$0.00</strong></div></div><a class="solid" style="display:inline-block" href="index.html">Back to the storefront</a></div>`:`<div class="empty"><h1>No order summary found</h1><p>Finish checkout to see the order summary.</p><a class="solid" style="display:inline-block" href="index.html">Return to the store</a></div>`};
   const loadSessionOrder=()=>{try{return JSON.parse(sessionStorage.getItem('cozynest-demo-last-order'))}catch{return null}};
-  siteHeader();siteFooter();favoritesHandler();
+  siteHeader();siteFooter();favoritesHandler();activateCardSwatches();
   switch(document.body.dataset.page){case 'home':home();break;case 'product':productPage();break;case 'cart':cartPage();break;case 'checkout':checkoutPage();break;case 'confirmation':confirmation();break;}
 })();
