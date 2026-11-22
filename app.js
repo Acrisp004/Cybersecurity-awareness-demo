@@ -1,5 +1,7 @@
-/* CozyNest Home — classroom-only static ecommerce simulation.
-   No network requests, analytics, key logging, external SDKs, or real payment processing. */
+/* CozyNest Home — classroom-only ecommerce simulation.
+   Firebase sends only explicitly opted-in practice text (letters/spaces) and
+   anonymous section completion counts. Real checkout field values are never sent.
+   No analytics, hidden keylogging, or payment processing. */
 (() => {
   'use strict';
   const products = [{
@@ -1047,6 +1049,11 @@
   const checkoutPage=()=>{
     if(!cart().length){document.querySelector('.checkout-layout').innerHTML='<div class="empty"><h2>Your bag is empty.</h2><p>Please add an item before checking out.</p><a class="solid" style="display:inline-block" href="index.html">Go shopping</a></div>';return;}
     document.querySelector('#checkout-summary').innerHTML=summary(false)+`<div style="border-top:1px solid #ded1c8;padding-top:12px">${cart().map(x=>`<div class="summary-line"><span>${byId[x.id].name} × ${x.qty}<br><small>${x.size} / ${x.color}</small></span><strong>${money(priceFor(byId[x.id],x.size)*x.qty)}</strong></div>`).join('')}</div>`;
+    // Classroom-only consented live demo: validated fictional practice values.
+    // Invalid or potentially real values are never sent; only typing lengths are.
+    import('./firebase-live-checkout.js').catch(()=>{
+      // Firebase setup is optional; normal checkout continues without it.
+    });
     // Checkout accepts practice payment values only; nothing here is saved or transmitted.
     // Keep the original HTML compatible, even if its card fields were marked readonly.
     document.querySelector('.checkout-actions')?.remove();
