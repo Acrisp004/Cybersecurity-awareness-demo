@@ -22,6 +22,45 @@
     material:'Linen/cotton composition — exact fabric details to be confirmed',
     care:'Follow the product care label. Full care instructions to be confirmed.',
     sizes:{'Twin':'Dimensions coming soon','Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
+  },{
+    id:'organic-cotton-jacquard-floral-sham-set',
+    name:'Organic Cotton Jacquard Floral Sham Set', type:'sham', color:'Floral',
+    price:25, old:38.46, sale:true, rating:4.7, reviews:'156', writtenReviewCount:22,
+    filterMaterial:'organic-cotton', quiltType:'jacquard', pattern:'jacquard',
+    image:'organic-cotton-jacquard-floral-sham-set-floral-room-close.png',
+    gallery:[
+      'organic-cotton-jacquard-floral-sham-set-floral-room-close.png',
+      'organic-cotton-jacquard-floral-sham-set-floral-stack.png',
+      'organic-cotton-jacquard-floral-sham-set-floral-room-front.png',
+      'organic-cotton-jacquard-floral-sham-set-floral-detail.png'
+    ],
+    galleries:{
+      'Floral':[
+        'organic-cotton-jacquard-floral-sham-set-floral-room-close.png',
+        'organic-cotton-jacquard-floral-sham-set-floral-stack.png',
+        'organic-cotton-jacquard-floral-sham-set-floral-room-front.png',
+        'organic-cotton-jacquard-floral-sham-set-floral-detail.png'
+      ],
+      'Geometric':[
+        'organic-cotton-jacquard-floral-sham-set-geometric-room-close.png',
+        'organic-cotton-jacquard-floral-sham-set-geometric-stack.png',
+        'organic-cotton-jacquard-floral-sham-set-geometric-room-front.png',
+        'organic-cotton-jacquard-floral-sham-set-geometric-detail.png'
+      ]
+    },
+    variantImages:{
+      'Floral':'organic-cotton-jacquard-floral-sham-set-floral-room-close.png',
+      'Geometric':'organic-cotton-jacquard-floral-sham-set-geometric-room-close.png'
+    },
+    sizePrices:{'Standard':25,'King':40},
+    sizeOriginalPrices:{'Standard':38.46,'King':61.54},
+    swatches:['#6a7897','#b6b09f'],
+    intro:'A soft organic cotton jacquard sham set with two pattern options: Floral and Geometric. Both styles bring subtle texture and an easy layered look to the bed.',
+    features:['Organic cotton jacquard sham set','Two pattern options: Floral and Geometric','Available in Standard and King sizes','Designed to coordinate with neutral bedding'],
+    material:'Organic cotton jacquard — exact fabric details to be confirmed',
+    care:'Follow the product care label. Full care instructions to be confirmed.',
+    sizes:{'Standard':'Dimensions coming soon','King':'Dimensions coming soon'}
+
   }];
 
   const colorPalettes = {
@@ -330,16 +369,29 @@
       "Slate",
       "#798799"
     ]
+  ],
+  "organic-cotton-jacquard-floral-sham-set": [
+    [
+      "Floral",
+      "#6a7897"
+    ],
+    [
+      "Geometric",
+      "#b6b09f"
+    ]
   ]
 };
   const colorSlug = str => str.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   products.forEach(p => {
-    p.colors=(colorPalettes[p.id]||[[p.color,'#e5ddd2']]).map(([name,hex],i)=>({
-      name,hex,image:p.image
+    p.colors=(colorPalettes[p.id]||[[p.color,'#e5ddd2']]).map(([name,hex])=>({
+      name,
+      hex,
+      image:p.variantImages?.[name] || p.image,
+      gallery:p.galleries?.[name] || p.gallery || [p.image]
     }));
     p.old = {"thermasoft": 299, "haven-quilt": 279, "cloudloft": 139, "willow-coverlet": 259, "ultraplush": 399, "meadow-bloom": 289, "knitluxe": 119, "evercozy": 429}[p.id] || p.old;
     // Keep a mix of sale prices and regular prices so the Deals filter is meaningful.
-    const saleIds=['european-linen-cotton-stitch-quilt','thermasoft','cloudloft','ultraplush','knitluxe','evercozy','fireside','aurora','aspen','harbor','rosewood','luna'];
+    const saleIds=['european-linen-cotton-stitch-quilt','organic-cotton-jacquard-floral-sham-set','thermasoft','cloudloft','ultraplush','knitluxe','evercozy','fireside','aurora','aspen','harbor','rosewood','luna'];
     if (!saleIds.includes(p.id)) p.old = null;
     p.sale = typeof p.old === 'number' && p.old > p.price;
   });
@@ -672,7 +724,8 @@
     'knitluxe':1276, 'evercozy':428, 'fireside':2246,
     'aurora':684, 'cedar-ridge':585, 'aspen':1189,
     'harbor':376, 'briar':712, 'rosewood':498,
-    'luna':1437, 'alpine-shams':284
+    'luna':1437, 'alpine-shams':284,
+    'organic-cotton-jacquard-floral-sham-set':156
   };
   const reviewNames = [
     'Alex','Avery','Blair','Cameron','Casey','Charlie','Dakota','Dana','Drew','Eden',
@@ -793,16 +846,17 @@
   const siteFooter=()=>document.querySelector('#site-footer').innerHTML=`<footer class="footer"><div class="footer-inner"><div class="footer-item"><span class="footer-icon">☎</span><div><strong>Phone</strong><br>(402) 555-0187<br>(402) 555-0142</div></div><div class="footer-item"><span class="footer-icon">◷</span><div><strong>Store Hours</strong><br>Mon–Fri 9 AM–7 PM<br>Sat 10 AM–6 PM · Sun 12 PM–5 PM</div></div><div class="footer-item"><span class="footer-icon">⌖</span><div><strong>Store Location</strong><br>1847 Willow Creek Lane<br>Lincoln, NE 68508</div></div><div class="footer-item"><span class="footer-icon">✉</span><div><strong>Email</strong><br>Cozynesthome@gmail.com</div></div></div><div class="footer-note">© 2026 CozyNest Home</div></footer>`;
   const variantFor=(p,name)=>p.colors.find(c=>c.name===name)||p.colors[0];
   const variantImage=(p,name)=>variantFor(p,name).image;
+  const variantGallery=(p,name)=>variantFor(p,name).gallery||p.gallery||[variantImage(p,name)];
   const swatchMarkup=(p,selected=p.colors[0].name,context='card')=>p.colors.map(({name,hex})=>
     `<button type="button" class="swatch-button ${name===selected?'selected':''}" style="--swatch:${hex}" data-${context}-color="${p.id}|${name}" aria-label="Select ${name} ${p.name}" aria-pressed="${name===selected}" title="${name}"></button>`
   ).join('');
-  const card=(p)=>`<article class="product-card" data-card-id="${p.id}"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a data-card-link href="product.html?id=${p.id}" aria-label="View ${p.name}"><img data-card-image src="${p.image}" alt="${p.name} photographed in ${p.color}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a data-card-link href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><a class="review-link" href="product.html?id=${p.id}#customer-reviews" aria-label="Read reviews for ${p.name}"><span class="stars">★</span> ${ratingFor(p)} &nbsp;(${ratingText(p)}) <span aria-hidden="true">↗</span></a></div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" role="group" aria-label="${p.name} colors">${swatchMarkup(p)}</div><div class="card-color-name" data-card-color-name>Color: ${p.colors[0].name}</div></article>`;
+  const card=(p)=>`<article class="product-card" data-card-id="${p.id}"><div class="product-photo">${p.sale?'<span class="badge-sale">On sale</span>':''}<a data-card-link href="product.html?id=${p.id}" aria-label="View ${p.name}"><img data-card-image src="${variantImage(p,p.colors[0].name)}" alt="${p.name} photographed in ${p.colors[0].name}" loading="lazy"></a><button class="heart ${favorites().includes(p.id)?'active':''}" data-favorite="${p.id}" aria-label="Save ${p.name} to favorites" title="Toggle favorite">${favorites().includes(p.id)?'♥':'♡'}</button></div><a data-card-link href="product.html?id=${p.id}" class="product-name">${p.name}</a><div class="rating"><a class="review-link" href="product.html?id=${p.id}#customer-reviews" aria-label="Read reviews for ${p.name}"><span class="stars">★</span> ${ratingFor(p)} &nbsp;(${ratingText(p)}) <span aria-hidden="true">↗</span></a></div><div class="prices">${p.old?`<span class="was">${money(p.old)}</span>`:''}<span class="${p.sale?'now':''}">${money(p.price)}</span></div><div class="swatches" role="group" aria-label="${p.name} colors">${swatchMarkup(p)}</div><div class="card-color-name" data-card-color-name>Color: ${p.colors[0].name}</div></article>`;
   const activateCardSwatches=()=>document.addEventListener('click',e=>{
     const sw=e.target.closest('[data-card-color]');if(!sw)return;
     const [id,name]=sw.dataset.cardColor.split('|');const p=byId[id];if(!p)return;
     const cardEl=sw.closest('[data-card-id]');const v=variantFor(p,name);
     cardEl.querySelector('[data-card-image]').src=v.image;
-    cardEl.querySelector('[data-card-image]').alt=`${p.name} photographed in ${p.color}`;
+    cardEl.querySelector('[data-card-image]').alt=`${p.name} photographed in ${name}`;
     cardEl.querySelectorAll('[data-card-link]').forEach(a=>a.href=`product.html?id=${encodeURIComponent(p.id)}&color=${encodeURIComponent(name)}`);
     cardEl.querySelector('[data-card-color-name]').textContent=`Color: ${name}`;
     cardEl.querySelectorAll('[data-card-color]').forEach(button=>{let selected=button===sw;button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));});
@@ -925,21 +979,28 @@
     const id=new URLSearchParams(location.search).get('id');const p=byId[id]||products[0];document.title=p.name+' | CozyNest Home';document.querySelector('#crumb-product').textContent=p.name;
     const initialColor=new URLSearchParams(location.search).get('color');
     const selectedColor=p.colors.some(c=>c.name===initialColor)?initialColor:p.colors[0].name;
-    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" id="gallery-main" alt="${p.name}, ${selectedColor}, product view 1" src="${variantImage(p,selectedColor)}"><div class="thumbs product-gallery-thumbs">${(p.gallery||[p.image]).map((img,i)=>`<button type="button" class="gallery-thumb ${i===0?'active':''}" data-gallery-index="${i}" aria-label="View product image ${i+1}"><img class="thumb" src="${img}" alt="${p.name} product view ${i+1}"></button>`).join('')}</div><div class="fabric-preview" aria-live="polite"><span id="selected-fabric" class="fabric-square" style="--fabric-color:${variantFor(p,selectedColor).hex}"></span><span class="fabric-preview-label">Selected color: <strong id="fabric-preview-name">${selectedColor}</strong></span></div></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${ratingText(p)}) · Read comments ↓</a></div><div class="detail-price"><span id="old-price" class="was">${money(originalFor(p,Object.keys(p.sizes)[0]))}</span> &nbsp; <span id="unit-price" class="${p.sale?'now':''}">${money(priceFor(p,Object.keys(p.sizes)[0]))}</span> <span id="discount-label" class="discount-label">45% off</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
-    document.querySelectorAll('[data-gallery-index]').forEach(button=>button.addEventListener('click',()=>{
-      const i=Number(button.dataset.galleryIndex);
-      const list=p.gallery||[p.image];
-      document.querySelector('#gallery-main').src=list[i]||list[0];
-      document.querySelector('#gallery-main').alt=`${p.name}, ${selectedColor}, product view ${i+1}`;
-      document.querySelectorAll('[data-gallery-index]').forEach(b=>b.classList.toggle('active',b===button));
-    }));
+    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" id="gallery-main" alt="${p.name}, ${selectedColor}, product view 1" src="${variantImage(p,selectedColor)}"><div class="thumbs product-gallery-thumbs"></div><div class="fabric-preview" aria-live="polite"><span id="selected-fabric" class="fabric-square" style="--fabric-color:${variantFor(p,selectedColor).hex}"></span><span class="fabric-preview-label">Selected color: <strong id="fabric-preview-name">${selectedColor}</strong></span></div></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${ratingText(p)}) · Read comments ↓</a></div><div class="detail-price"><span id="old-price" class="was">${money(originalFor(p,Object.keys(p.sizes)[0]))}</span> &nbsp; <span id="unit-price" class="${p.sale?'now':''}">${money(priceFor(p,Object.keys(p.sizes)[0]))}</span> <span id="discount-label" class="discount-label">45% off</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div><div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
     const colorSelect=document.querySelector('#product-color');
+    const bindGalleryThumbs=name=>{
+      document.querySelectorAll('[data-gallery-index]').forEach(button=>button.addEventListener('click',()=>{
+        const i=Number(button.dataset.galleryIndex);
+        const list=variantGallery(p,name);
+        document.querySelector('#gallery-main').src=list[i]||list[0];
+        document.querySelector('#gallery-main').alt=`${p.name}, ${name}, product view ${i+1}`;
+        document.querySelectorAll('[data-gallery-index]').forEach(b=>b.classList.toggle('active',b===button));
+      }));
+    };
+    const renderGallery=name=>{
+      const list=variantGallery(p,name);
+      document.querySelector('.product-gallery-thumbs').innerHTML=list.map((img,i)=>`<button type="button" class="gallery-thumb ${i===0?'active':''}" data-gallery-index="${i}" aria-label="View product image ${i+1}"><img class="thumb" src="${img}" alt="${p.name} ${name} product view ${i+1}"></button>`).join('');
+      document.querySelector('#gallery-main').src=list[0]||variantImage(p,name);
+      document.querySelector('#gallery-main').alt=`${p.name}, ${name}, product view 1`;
+      bindGalleryThumbs(name);
+    };
     const setColor=name=>{
       const variant=variantFor(p,name);
       colorSelect.value=variant.name;
-      document.querySelector('.large-image').src=variant.image;
-      document.querySelector('.large-image').alt=`${p.name} photographed in ${p.color}`;
-      document.querySelector('.thumb').src=variant.image;
+      renderGallery(variant.name);
       document.querySelector('#selected-color-name').textContent=variant.name;
       document.querySelector('#fabric-preview-name').textContent=variant.name;
       document.querySelector('#selected-fabric').style.setProperty('--fabric-color', variant.hex);
@@ -948,6 +1009,7 @@
         button.classList.toggle('selected',active);button.setAttribute('aria-pressed',String(active));
       });
     };
+    renderGallery(selectedColor);
     document.querySelector('#detail-swatches').addEventListener('click',e=>{
       const button=e.target.closest('[data-detail-color]');if(!button)return;
       setColor(button.dataset.detailColor.split('|')[1]);
@@ -979,7 +1041,7 @@
   const summary=(showButton=true)=>`<h2 style="font-family:var(--serif);margin-top:0">Order summary</h2><div class="summary-line"><span>Subtotal (${cart().reduce((n,c)=>n+c.qty,0)} items)</span><span>${money(subtotal())}</span></div><div class="summary-line"><span>Shipping</span><span>FREE</span></div><div class="summary-line"><span>Tax</span><span>$0.00</span></div><div class="summary-line total"><span>Total</span><span>${money(subtotal())}</span></div>${showButton?`<a href="checkout.html" class="solid full" style="display:block;text-align:center">Continue to checkout</a>`:''}`;
   const cartPage=()=>{
     const c=cart(),root=document.querySelector('#cart-content');if(!c.length){root.innerHTML=`<div class="empty"><h2>Your bag is empty</h2><p>Browse the collection to find something you like.</p><a class="solid" href="index.html" style="display:inline-block;margin-top:10px">Shop the collection</a></div>`;return;}
-    root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${variantImage(p,x.color)}" alt="${p.name} photographed in ${p.color}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}</div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(priceFor(p,x.size)*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
+    root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${variantImage(p,x.color)}" alt="${p.name} photographed in ${x.color}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}</div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(priceFor(p,x.size)*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
     root.querySelectorAll('[data-action]').forEach(btn=>btn.addEventListener('click',()=>{const current=cart(),idx=Number(btn.dataset.index);if(!current[idx])return;switch(btn.dataset.action){case 'more':current[idx].qty=Math.min(current[idx].qty+1,10);break;case 'less':current[idx].qty--;break;case 'remove':current.splice(idx,1);break;}saveCart(current.filter(x=>x.qty>0));cartPage()}));
   };
   const checkoutPage=()=>{
