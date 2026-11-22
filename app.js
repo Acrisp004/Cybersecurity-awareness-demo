@@ -786,7 +786,7 @@
   const renderCount=()=>document.querySelectorAll('[data-cart-count]').forEach(e=>e.textContent=String(cart().reduce((n,c)=>n+c.qty,0)));
   const html = s=>s; // Products are static, not user-supplied HTML.
   const toast = msg=>{document.querySelector('.toast')?.remove();const e=document.createElement('div');e.className='toast';e.role='status';e.textContent=msg;document.body.append(e);setTimeout(()=>e.remove(),2700)};
-  const siteHeader=()=>{document.querySelector('#site-header').innerHTML=`<div class="promo">Soft layers. Cozy spaces. &nbsp; ✦ &nbsp; Some favorites are on sale now!</div><div class="safety">TRAINING STOREFRONT · Sample products, prices and reviews · No actual orders or payments</div><header class="header"><a href="index.html" class="logo" aria-label="CozyNest Home">⌂ <span>CozyNest Home</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">New Arrivals</a><a href="index.html?sort=rating">Best Sellers</a><a href="index.html?category=heated">Heated Blankets</a><a href="index.html?category=quilt">Quilts</a><a href="index.html?category=throw">Throws</a><a href="index.html?category=coverlet">Bedroom</a><a href="index.html?category=gift">Gifts</a><a href="index.html?deals=sale" class="sale-link">On Sale</a></nav><div class="actions"><form id="header-search" role="search" class="searchbar"><span aria-hidden="true">⌕</span><input id="search-input" aria-label="Search products" type="search" placeholder="Search cozy bedding..."></form><a class="iconlink" href="cart.html" title="Shopping bag" aria-label="Shopping bag">♧<span class="counter" data-cart-count>0</span></a></div></header><hr class="divider">`;
+  const siteHeader=()=>{document.querySelector('#site-header').innerHTML=`<div class="promo">Soft layers. Cozy spaces. &nbsp; ✦ &nbsp; Some favorites are on sale now!</div><div class="safety">TRAINING STOREFRONT · Sample products, prices and reviews · No actual orders or payments</div><header class="header"><a href="index.html" class="logo" aria-label="CozyNest Home">⌂ <span>CozyNest Home</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">New Arrivals</a><a href="index.html?sort=rating">Best Sellers</a><a href="index.html?category=heated">Heated Blankets</a><a href="index.html?category=quilt">Quilts</a><a href="index.html?category=throw">Throws</a><a href="index.html?category=coverlet">Bedroom</a><a href="index.html?category=gift">Gifts</a><a href="index.html?deals=sale" class="sale-link">On Sale</a></nav><div class="actions"><form id="header-search" role="search" class="searchbar"><span aria-hidden="true">⌕</span><input id="search-input" aria-label="Search products" type="search" placeholder="Search cozy bedding..."></form><a class="iconlink" href="cart.html" title="Shopping bag" aria-label="Shopping bag"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.6 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path></svg><span class="counter" data-cart-count>0</span></a></div></header><hr class="divider">`;
     document.querySelector('#header-search').addEventListener('submit',e=>{e.preventDefault();const q=document.querySelector('#search-input').value.trim();window.location.href='index.html?search='+encodeURIComponent(q)});
     renderCount();
   };
@@ -976,7 +976,7 @@
     document.querySelector('#related-grid').innerHTML=products.filter(x=>x.id!==p.id).slice(0,4).map(card).join('');
   };
   const subtotal=()=>cart().reduce((n,c)=>n+priceFor(byId[c.id],c.size)*c.qty,0);
-  const summary=(showButton=true)=>`<h2 style="font-family:var(--serif);margin-top:0">Order summary</h2><div class="summary-line"><span>Subtotal (${cart().reduce((n,c)=>n+c.qty,0)} items)</span><span>${money(subtotal())}</span></div><div class="summary-line"><span>Shipping</span><span>FREE</span></div><div class="summary-line"><span>Tax</span><span>$0.00</span></div><div class="summary-line total"><span>Total</span><span>${money(subtotal())}</span></div><p class="small light">Training order summary · no charges or deliveries</p>${showButton?`<a href="checkout.html" class="solid full" style="display:block;text-align:center">Continue to checkout</a>`:''}`;
+  const summary=(showButton=true)=>`<h2 style="font-family:var(--serif);margin-top:0">Order summary</h2><div class="summary-line"><span>Subtotal (${cart().reduce((n,c)=>n+c.qty,0)} items)</span><span>${money(subtotal())}</span></div><div class="summary-line"><span>Shipping</span><span>FREE</span></div><div class="summary-line"><span>Tax</span><span>$0.00</span></div><div class="summary-line total"><span>Total</span><span>${money(subtotal())}</span></div>${showButton?`<a href="checkout.html" class="solid full" style="display:block;text-align:center">Continue to checkout</a>`:''}`;
   const cartPage=()=>{
     const c=cart(),root=document.querySelector('#cart-content');if(!c.length){root.innerHTML=`<div class="empty"><h2>Your bag is empty</h2><p>Browse the collection to find something you like.</p><a class="solid" href="index.html" style="display:inline-block;margin-top:10px">Shop the collection</a></div>`;return;}
     root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${variantImage(p,x.color)}" alt="${p.name} photographed in ${p.color}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}</div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(priceFor(p,x.size)*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
@@ -985,16 +985,65 @@
   const checkoutPage=()=>{
     if(!cart().length){document.querySelector('.checkout-layout').innerHTML='<div class="empty"><h2>Your bag is empty.</h2><p>Please add an item before checking out.</p><a class="solid" style="display:inline-block" href="index.html">Go shopping</a></div>';return;}
     document.querySelector('#checkout-summary').innerHTML=summary(false)+`<div style="border-top:1px solid #ded1c8;padding-top:12px">${cart().map(x=>`<div class="summary-line"><span>${byId[x.id].name} × ${x.qty}<br><small>${x.size} / ${x.color}</small></span><strong>${money(priceFor(byId[x.id],x.size)*x.qty)}</strong></div>`).join('')}</div>`;
-    // The example payment display is read-only and no payment data is collected.
-    document.querySelector('#fill-demo').addEventListener('click',()=>{Object.entries({'demo-name':'Example Student','demo-email':'student@example.com','demo-phone':'402-555-0148','demo-street':'100 Example Avenue','demo-city':'Sample City','demo-state':'NE','demo-zip':'00000'}).forEach(([id,value])=>document.getElementById(id).value=value);toast('Example details added')});
+    // Checkout accepts practice payment values only; nothing here is saved or transmitted.
+    // Keep the original HTML compatible, even if its card fields were marked readonly.
+    document.querySelector('.checkout-actions')?.remove();
+    const cardNumberInput=document.getElementById('demo-card-number');
+    const expiryInput=document.getElementById('demo-card-expiry');
+    const paymentExplanation=document.querySelector('.payment-explainer');
+    if(paymentExplanation)paymentExplanation.textContent='Practice payment only. Use test card 4242 4242 4242 4242 and an example expiration date (MM/YY). Never enter a real card.';
+    if(cardNumberInput){
+      cardNumberInput.readOnly=false;
+      cardNumberInput.removeAttribute('readonly');
+      cardNumberInput.removeAttribute('aria-readonly');
+      cardNumberInput.setAttribute('aria-label','Example test card number');
+      cardNumberInput.autocomplete='off';
+      cardNumberInput.inputMode='numeric';
+      cardNumberInput.maxLength=19;
+      cardNumberInput.placeholder='4242 4242 4242 4242';
+      cardNumberInput.required=true;
+      cardNumberInput.defaultValue='';
+      cardNumberInput.value='';
+      cardNumberInput.addEventListener('input',()=>{
+        const digits=cardNumberInput.value.replace(/\D/g,'').slice(0,16);
+        cardNumberInput.value=digits.replace(/(.{4})/g,'$1 ').trim();
+      });
+    }
+    if(expiryInput){
+      expiryInput.readOnly=false;
+      expiryInput.removeAttribute('readonly');
+      expiryInput.removeAttribute('aria-readonly');
+      expiryInput.setAttribute('aria-label','Example expiration date, month and year');
+      expiryInput.autocomplete='off';
+      expiryInput.inputMode='numeric';
+      expiryInput.maxLength=5;
+      expiryInput.placeholder='MM/YY';
+      expiryInput.required=true;
+      expiryInput.defaultValue='';
+      expiryInput.value='';
+      expiryInput.addEventListener('input',()=>{
+        const digits=expiryInput.value.replace(/\D/g,'').slice(0,4);
+        expiryInput.value=digits.length>2?digits.slice(0,2)+'/'+digits.slice(2):digits;
+      });
+    }
     document.querySelector('#checkout-form').addEventListener('submit',e=>{
       e.preventDefault();const f=e.currentTarget;const error=document.getElementById('checkout-error');error.style.display='none';
       if(!f.reportValidity())return;
+      // Only the fixed test card is permitted. Never collect or store real payment data.
+      if(!cardNumberInput || cardNumberInput.value.replace(/\D/g,'')!=='4242424242424242'){
+        error.textContent='Use the example test card number: 4242 4242 4242 4242. Do not use a real card.';
+        error.style.display='block';return;
+      }
+      if(!expiryInput || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryInput.value)){
+        error.textContent='Enter an example expiration date in MM/YY format, such as 12/30.';
+        error.style.display='block';return;
+      }
       const mail=document.getElementById('demo-email').value.trim().toLowerCase();const phone=document.getElementById('demo-phone').value.replace(/\D/g,'');
       if(!mail.endsWith('@example.com')&&!mail.endsWith('@example.org')&&!mail.endsWith('@example.net')){error.textContent='Enter an example email ending in @example.com, @example.org or @example.net.';error.style.display='block';return;}
       if(!/^[0-9]{10,11}$/.test(phone)||!/55501[0-9]{2}$/.test(phone.slice(-7))){error.textContent='Use an example 555-01XX phone number, such as 402-555-0148.';error.style.display='block';return;}
       const street=document.getElementById('demo-street').value.trim().toLowerCase();if(!/(example|sample|fictional|demo)/.test(street)){error.textContent='Use a made-up address such as 100 Example Avenue.';error.style.display='block';return;}
       const order={id:'TRAIN-'+Math.floor(100000+Math.random()*900000),itemCount:cart().reduce((n,c)=>n+c.qty,0),total:subtotal(),date:new Date().toLocaleString()};
+      cardNumberInput.value='';expiryInput.value=''; // Do not retain entered test-card values.
       sessionStorage.setItem('cozynest-demo-last-order',JSON.stringify(order));saveCart([]);window.location.href='confirmation.html';
     });
   };
