@@ -60,3 +60,11 @@
 .checkout-submit{font-size:15px;padding:18px}.checkout-underbutton{text-align:center;font-size:11px;color:#746359;margin:10px 0}
 .reviews-more-wrap{text-align:center;margin:24px 0 30px}.reviews-more-wrap button[hidden]{display:none}
 @media(max-width:760px){.checkout-title-row{align-items:flex-start;flex-direction:column}.checkout-panel{padding:18px}.payment-inputs{grid-template-columns:1fr}.checkout-section-head h2{font-size:22px}}
+
+/* Natural photography color selector: never tint an entire room/photo. */
+.fabric-preview{display:flex;align-items:center;gap:13px;margin:14px 0 8px;border:1px solid #e8e3dc;border-radius:6px;padding:11px 13px;max-width:500px;background:#fcfbf9}
+.fabric-preview .fabric-square{width:54px;height:54px;flex:none;border-radius:5px;border:1px solid #ad9b8e;background:var(--fabric-color);box-shadow:inset 0 0 2px #ffffff88}
+.fabric-preview strong{display:block;font-size:13px;font-weight:700;margin:0 0 5px}
+.fabric-preview small{font-size:11px;line-height:1.5;color:#806f62;display:block}
+.swatch-button{width:21px;height:21px;border-color:#c4bbb1;box-shadow:inset 0 0 0 1px #fff9, 0 0 0 2px #fff}
+.detail-color-swatches .swatch-button{width:29px;height:29px}
