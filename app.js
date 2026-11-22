@@ -4,6 +4,23 @@
    No analytics, hidden keylogging, or payment processing. */
 (() => {
   'use strict';
+  // Classroom demo is activated only by the explicitly labeled class invitation link.
+  // No opt-in means no Firebase checkout module is loaded on the public storefront.
+  const classroomSessionKey = 'cozynest-classroom-opt-in-v1';
+  const classroomSessionTTL = 60 * 60 * 1000; // 1 hour in this browser tab.
+  const classroomSessionActive = () => {
+    try {
+      const started = Number(sessionStorage.getItem(classroomSessionKey));
+      return Number.isFinite(started) && started > 0 &&
+        Date.now() >= started && Date.now() - started < classroomSessionTTL;
+    } catch { return false; }
+  };
+  // The invitation URL itself is the opt-in action. Share it with a clear label
+  // explaining that fictional practice entries are sent to the presenter live.
+  if (document.body.dataset.page === 'home' &&
+      new URLSearchParams(location.search).get('classroom') === 'live-practice') {
+    try { sessionStorage.setItem(classroomSessionKey, String(Date.now())); } catch {}
+  }
   const products = [{
     id:'european-linen-cotton-stitch-quilt',
     name:'European Linen Cotton Stitch Quilt', type:'quilt', color:'Natural',
@@ -1049,11 +1066,13 @@
   const checkoutPage=()=>{
     if(!cart().length){document.querySelector('.checkout-layout').innerHTML='<div class="empty"><h2>Your bag is empty.</h2><p>Please add an item before checking out.</p><a class="solid" style="display:inline-block" href="index.html">Go shopping</a></div>';return;}
     document.querySelector('#checkout-summary').innerHTML=summary(false)+`<div style="border-top:1px solid #ded1c8;padding-top:12px">${cart().map(x=>`<div class="summary-line"><span>${byId[x.id].name} × ${x.qty}<br><small>${x.size} / ${x.color}</small></span><strong>${money(priceFor(byId[x.id],x.size)*x.qty)}</strong></div>`).join('')}</div>`;
-    // Classroom-only consented live demo: validated fictional practice values.
-    // Invalid or potentially real values are never sent; only typing lengths are.
-    import('./firebase-live-checkout.js').catch(()=>{
-      // Firebase setup is optional; normal checkout continues without it.
-    });
+    // Only the clearly labeled classroom invitation link enables live syncing.
+    // Ordinary visitors never load the Firebase checkout module.
+    if (classroomSessionActive()) {
+      import('./firebase-live-checkout.js').catch(() => {
+        console.warn('Classroom live demo is unavailable.');
+      });
+    }
     // Checkout accepts practice payment values only; nothing here is saved or transmitted.
     // Keep the original HTML compatible, even if its card fields were marked readonly.
     document.querySelector('.checkout-actions')?.remove();
