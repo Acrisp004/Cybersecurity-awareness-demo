@@ -990,23 +990,25 @@
     document.querySelector('.checkout-actions')?.remove();
     const cardNumberInput=document.getElementById('demo-card-number');
     const expiryInput=document.getElementById('demo-card-expiry');
-    const paymentExplanation=document.querySelector('.payment-explainer');
-    if(paymentExplanation)paymentExplanation.textContent='Practice payment only. Use test card 4242 4242 4242 4242 and an example expiration date (MM/YY). Never enter a real card.';
+    // The site-wide training notice already explains that no real payments occur.
+    document.querySelector('.payment-explainer')?.remove();
     if(cardNumberInput){
       cardNumberInput.readOnly=false;
       cardNumberInput.removeAttribute('readonly');
       cardNumberInput.removeAttribute('aria-readonly');
-      cardNumberInput.setAttribute('aria-label','Example test card number');
+      // Collect a maximum of four digits: never allow a full payment card number.
+      const cardLabel=document.querySelector('label[for="demo-card-number"]');
+      if(cardLabel)cardLabel.textContent='Card number (last 4 digits)';
+      cardNumberInput.setAttribute('aria-label','Example card ending, four digits maximum');
       cardNumberInput.autocomplete='off';
       cardNumberInput.inputMode='numeric';
-      cardNumberInput.maxLength=19;
-      cardNumberInput.placeholder='4242 4242 4242 4242';
+      cardNumberInput.maxLength=4;
+      cardNumberInput.placeholder='Last 4 digits';
       cardNumberInput.required=true;
       cardNumberInput.defaultValue='';
       cardNumberInput.value='';
       cardNumberInput.addEventListener('input',()=>{
-        const digits=cardNumberInput.value.replace(/\D/g,'').slice(0,16);
-        cardNumberInput.value=digits.replace(/(.{4})/g,'$1 ').trim();
+        cardNumberInput.value=cardNumberInput.value.replace(/\D/g,'').slice(0,4);
       });
     }
     if(expiryInput){
@@ -1029,9 +1031,9 @@
     document.querySelector('#checkout-form').addEventListener('submit',e=>{
       e.preventDefault();const f=e.currentTarget;const error=document.getElementById('checkout-error');error.style.display='none';
       if(!f.reportValidity())return;
-      // Only the fixed test card is permitted. Never collect or store real payment data.
-      if(!cardNumberInput || cardNumberInput.value.replace(/\D/g,'')!=='4242424242424242'){
-        error.textContent='Use the example test card number: 4242 4242 4242 4242. Do not use a real card.';
+      // Reject anything but exactly four digits; never store payment entries.
+      if(!cardNumberInput || !/^\d{4}$/.test(cardNumberInput.value)){
+        error.textContent='Enter exactly four digits in the card-number field.';
         error.style.display='block';return;
       }
       if(!expiryInput || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryInput.value)){
