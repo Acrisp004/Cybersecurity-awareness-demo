@@ -60,3 +60,9 @@
 .collection-main .catalog-empty{padding:40px 20px;background:#fdfbf8;border-radius:6px}
 @media(max-width:1100px){.collection-main .categories{gap:10px}.collection-main .category span{font-size:12px}.collection-main .catalog-filters{align-items:flex-start}.collection-main .results{width:100%;justify-content:space-between}}
 @media(max-width:760px){.collection-main .categories{display:flex;overflow-x:auto;gap:18px;padding:23px 0 25px;scroll-snap-type:x mandatory}.collection-main .category{flex:0 0 93px;scroll-snap-align:start}.collection-main .category img{width:85px}.collection-main .category span{font-size:11px}.collection-main .page-title{font-size:21px}.collection-main .filter-left{flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding-bottom:3px}.collection-main .pill{flex:0 0 auto}}
+
+/* Compact color label directly under the product photos */
+.fabric-preview{display:flex;align-items:center;gap:10px;margin-top:16px;padding:12px 14px;background:#f8f4ef;border:1px solid #e7dfd6;border-radius:6px;max-width:360px}
+.fabric-preview .fabric-square{display:inline-block;flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--fabric-color);border:1px solid #bbb1a7}
+.fabric-preview-label{font-size:13px;color:#554539;line-height:1.5}
+.fabric-preview-label strong{color:#30251f}
