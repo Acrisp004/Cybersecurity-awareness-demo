@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CozyNest Home — Presenter Dashboard</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#30251f;background:#f8f5f0}*{box-sizing:border-box}body{margin:0;padding:28px 16px}
+main{max-width:1040px;margin:0 auto}h1{font:normal 36px Georgia,serif;margin:12px 0}p{line-height:1.6}
+.muted{color:#766b61;font-size:13px}.card,.session{background:#fff;border:1px solid #e0d6cb;border-radius:8px;padding:22px;margin:16px 0}
+button{background:#39291f;color:#fff;border:0;padding:12px 20px;border-radius:6px;font-size:15px;cursor:pointer}
+button[hidden],#signed-in[hidden]{display:none}button:focus-visible{outline:3px solid #b77d64;outline-offset:3px}
+.field-grid{display:grid;grid-template-columns:180px minmax(0,1fr);gap:0;margin:12px 0 0}
+.field-grid dt,.field-grid dd{padding:12px;border-bottom:1px solid #eee8e1;margin:0;font-size:14px;overflow-wrap:anywhere}
+.field-grid dt{font-weight:700;color:#5b5047}.session h3{margin:0;font-family:Georgia,serif;font-size:22px;font-weight:normal}
+#instructor-uid{font-family:ui-monospace,monospace;word-break:break-all;background:#f1ebe4;padding:8px 10px;border-radius:4px;display:block}
+@media(max-width:600px){.field-grid{grid-template-columns:120px minmax(0,1fr)}.field-grid dt,.field-grid dd{padding:9px 6px;font-size:12px}}
+</style></head>
+<body><main>
+<a href="index.html">CozyNest Home</a>
+<h1>Classroom presenter dashboard</h1>
+<p class="muted">For the instructor's private screen. Shows only explicitly consented, fictional practice entries. Invalid or incomplete values appear as typing progress, without transmitting their contents.</p>
+<div class="card"><button id="google-login" type="button">Sign in with Google</button>
+<div id="signed-in" hidden><p>Presenter Firebase UID — copy this into the database rules:</p>
+<code id="instructor-uid"></code>
+<button id="google-logout" type="button">Sign out</button></div>
+<p id="dashboard-status" role="status" aria-live="polite">Sign in with Google to continue.</p></div>
+<h2>Active practice sessions: <span id="session-count">0</span></h2>
+<div id="session-list" aria-live="polite"><p class="muted">No active sessions.</p></div>
+</main><script type="module" src="firebase-live-dashboard.js"></script></body></html>
