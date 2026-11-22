@@ -1,7 +1,7 @@
 {
   "rules": {
     "classroomSessions": {
-      ".read": "auth != null && auth.uid === 'REPLACE_WITH_YOUR_PRESENTER_UID' && auth.token.firebase.sign_in_provider === 'google.com'",
+      ".read": "auth != null && auth.uid === 'uf3pslQ1hOTtsU7m2ezX0OQSPg53' && auth.token.firebase.sign_in_provider === 'google.com'",
       "$sessionId": {
         ".write": "auth != null && auth.uid === $sessionId && auth.token.firebase.sign_in_provider === 'anonymous'",
         ".validate": "newData.hasChildren(['startedAt','updatedAt','status','fields'])",
