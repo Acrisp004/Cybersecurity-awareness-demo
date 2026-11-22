@@ -32,3 +32,31 @@
 .category-glyph{display:grid;place-items:center;width:93px;height:93px;border-radius:50%;background:#efeae4;font-size:34px;color:#68584a;border:1px solid #dfd4c9}
 .category.active .category-glyph{outline:2px solid #634b3f;outline-offset:3px}
 @media(max-width:760px){.category-glyph{width:70px;height:70px}.gallery-thumb .thumb{width:64px;height:64px}}
+
+
+/* Catalog category photos + Quince-style compact filters */
+.collection-main .breadcrumbs{padding-top:22px;padding-bottom:17px;font-size:12px}
+.collection-main .page-title{font-family:Arial,Helvetica,sans-serif;font-size:22px;letter-spacing:.015em;font-weight:700;margin:0 0 5px}
+.collection-main .categories{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:16px;align-items:start;padding:27px 0 26px;overflow:visible}
+.collection-main .category{width:100%;min-width:0;display:flex;align-items:center;gap:12px;flex-direction:column;text-align:center;background:none;border:0;padding:0;cursor:pointer}
+.collection-main .category img{display:block;width:min(100%,122px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid #fff;outline:1px solid transparent;box-shadow:none;background:#f0eeeb;transition:transform .2s ease,outline-color .2s ease}
+.collection-main .category.active img{outline:1px solid #312a27}
+.collection-main .category:hover img{transform:scale(1.035)}
+.collection-main .category span{font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.25;font-weight:400;min-height:2.5em;max-width:140px}
+.collection-main .category.active span{font-weight:600}
+.collection-main .category:hover span{text-decoration:underline}
+.collection-main .catalog-filters{margin-bottom:20px;gap:14px;align-items:center}
+.collection-main .filter-left{gap:8px;display:flex;flex-wrap:wrap;min-width:0}
+.collection-main .pill{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:8px 11px;border-radius:22px;border:1px solid #ddd5cd;background:#fff;color:#4a3930;font-size:12px;white-space:nowrap;line-height:1.1}
+.collection-main .pill select{border:0;outline:0;background:transparent;color:#554139;font-size:12px;max-width:136px;min-width:25px;cursor:pointer}
+.collection-main .filter-trigger{cursor:pointer;gap:8px}
+.collection-main .filter-trigger:hover,.collection-main .pill:focus-within{border-color:#a99785}
+.collection-main .results{display:flex;align-items:center;gap:10px;white-space:nowrap;margin-left:auto}
+.collection-main .sort-pill select{min-width:85px}
+.collection-main .extra-filters{padding:13px 17px;display:flex;align-items:center;gap:20px;background:#faf7f4;border:1px solid #e5ded6;border-radius:6px;margin-top:-3px;margin-bottom:18px;font-size:13px}
+.collection-main .extra-filters[hidden]{display:none}
+.collection-main .extra-filters select{background:#fff;border:1px solid #d5c9bf;border-radius:4px;padding:8px;font-size:12px;margin-left:8px}
+.collection-main .reset-filters{background:none;color:#76513d;text-decoration:underline;border:0;font-size:12px}
+.collection-main .catalog-empty{padding:40px 20px;background:#fdfbf8;border-radius:6px}
+@media(max-width:1100px){.collection-main .categories{gap:10px}.collection-main .category span{font-size:12px}.collection-main .catalog-filters{align-items:flex-start}.collection-main .results{width:100%;justify-content:space-between}}
+@media(max-width:760px){.collection-main .categories{display:flex;overflow-x:auto;gap:18px;padding:23px 0 25px;scroll-snap-type:x mandatory}.collection-main .category{flex:0 0 93px;scroll-snap-align:start}.collection-main .category img{width:85px}.collection-main .category span{font-size:11px}.collection-main .page-title{font-size:21px}.collection-main .filter-left{flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding-bottom:3px}.collection-main .pill{flex:0 0 auto}}

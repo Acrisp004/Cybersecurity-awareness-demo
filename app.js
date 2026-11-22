@@ -6,6 +6,7 @@
     id:'european-linen-cotton-stitch-quilt',
     name:'European Linen Cotton Stitch Quilt', type:'quilt', color:'Natural',
     price:129, old:235, sale:true, rating:4.9, reviews:'2,846', writtenReviewCount:118,
+    filterMaterial:'linen-cotton', quiltType:'stitched', pattern:'textured',
     image:'european-linen-natural-folded.jpg',
     gallery:[
       'european-linen-natural-folded.jpg',
@@ -808,25 +809,79 @@
   });
   const favoritesHandler=()=>document.addEventListener('click',e=>{const btn=e.target.closest('[data-favorite]');if(!btn)return;const id=btn.dataset.favorite;const f=favorites();const next=f.includes(id)?f.filter(x=>x!==id):[...f,id];localStorage.setItem(wishKey,JSON.stringify(next));document.querySelectorAll(`[data-favorite="${id}"]`).forEach(b=>{b.classList.toggle('active',next.includes(id));b.textContent=next.includes(id)?'♥':'♡'});toast(next.includes(id)?'Saved to favorites':'Removed from favorites')});
   const home=()=>{
-    const cats=[['all','All','✦'],['quilt','Quilts','▦']];
-    const params=new URLSearchParams(location.search);const initialType=params.get('category')||'all';const tf=document.querySelector('#type-filter');if([...tf.options].some(o=>o.value===initialType))tf.value=initialType;
+    const cats=[
+      ['all','All','category-all.jpg'],
+      ['quilt','Quilts','category-quilt.jpg'],
+      ['comforter','Comforters','category-comforter.jpg'],
+      ['coverlet','Coverlets','category-coverlet.jpg'],
+      ['heated','Bed Blankets','category-heated.jpg'],
+      ['set','Quilt & Coverlet Sets','category-set.jpg'],
+      ['sham','Shams','category-sham.jpg']
+    ];
+    const params=new URLSearchParams(location.search);
+    const tf=document.querySelector('#type-filter');
+    const initialType=params.get('category')||'all';
+    if([...tf.options].some(o=>o.value===initialType))tf.value=initialType;
     const colorFilter=document.querySelector('#color-filter');
-    const uniqueColors=[...new Set(products.flatMap(p=>p.colors.map(c=>c.name)))].sort();
-    colorFilter.innerHTML='<option value="all">All colors</option>'+uniqueColors.map(name=>`<option value="${name}">${name}</option>`).join('');
+    const colors=[...new Set(products.flatMap(p=>p.colors.map(c=>c.name)))].sort();
+    colorFilter.innerHTML='<option value="all">All</option>'+colors.map(n=>`<option value="${n}">${n}</option>`).join('');
+    const sizeFilter=document.querySelector('#size-filter');
+    const sizes=[...new Set(products.flatMap(p=>Object.keys(p.sizes)))];
+    sizeFilter.innerHTML='<option value="all">All</option>'+sizes.map(s=>`<option value="${s}">${s}</option>`).join('');
     if(params.get('deals')==='sale')document.querySelector('#deal-filter').value='sale';
     if(['price-low','price-high','rating'].includes(params.get('sort')))document.querySelector('#sort-filter').value=params.get('sort');
     if(params.has('search'))document.querySelector('#search-input').value=params.get('search');
+    const checkCategory=(p,type)=>type==='all'||p.type===type||(type==='heated'&&['heated','throw'].includes(p.type))||(type==='set'&&['set','gift'].includes(p.type));
     const render=()=>{
-      const type=tf.value,color=document.querySelector('#color-filter').value,price=document.querySelector('#price-filter').value,deal=document.querySelector('#deal-filter').value,sort=document.querySelector('#sort-filter').value,q=document.querySelector('#search-input').value.trim().toLowerCase();
-      let arr=products.filter(p=>(type==='all'||p.type===type)&&(color==='all'||p.colors.some(c=>c.name===color))&&(deal==='all'||p.sale)&&(!q||p.name.toLowerCase().includes(q)||p.intro.toLowerCase().includes(q)));
-      if(price!=='all'){const [low,high]=price.split('-').map(Number);arr=arr.filter(p=>p.price>=low&&p.price<(high===999?1000:high));}
-      if(sort==='price-low')arr.sort((a,b)=>a.price-b.price);if(sort==='price-high')arr.sort((a,b)=>b.price-a.price);if(sort==='rating')arr.sort((a,b)=>Number(ratingFor(b))-Number(ratingFor(a)));
-      document.querySelector('#product-grid').innerHTML=arr.map(card).join('');document.querySelector('#result-count').textContent=arr.length+' product'+(arr.length===1?'':'s');document.querySelector('#no-results').style.display=arr.length?'none':'block';
-      document.querySelector('#categories').innerHTML=cats.map(([id,name,img])=>`<button class="category ${id===type?'active':''}" data-category="${id}" aria-pressed="${id===type}"><span class="category-glyph" aria-hidden="true">${img}</span><span>${name}</span></button>`).join('');
+      const type=tf.value;
+      const color=colorFilter.value;
+      const size=sizeFilter.value;
+      const material=document.querySelector('#material-filter').value;
+      const quiltType=document.querySelector('#quilt-type-filter').value;
+      const pattern=document.querySelector('#pattern-filter').value;
+      const price=document.querySelector('#price-filter').value;
+      const deal=document.querySelector('#deal-filter').value;
+      const sort=document.querySelector('#sort-filter').value;
+      const q=document.querySelector('#search-input').value.trim().toLowerCase();
+      let arr=products.filter(p=>checkCategory(p,type)
+        &&(color==='all'||p.colors.some(c=>c.name===color))
+        &&(size==='all'||Object.prototype.hasOwnProperty.call(p.sizes,size))
+        &&(material==='all'||p.filterMaterial===material)
+        &&(quiltType==='all'||p.quiltType===quiltType)
+        &&(pattern==='all'||p.pattern===pattern)
+        &&(deal==='all'||p.sale)
+        &&(!q||p.name.toLowerCase().includes(q)||p.intro.toLowerCase().includes(q)));
+      if(price!=='all'){
+        const [low,high]=price.split('-').map(Number);
+        arr=arr.filter(p=>p.price>=low&&p.price<high);
+      }
+      if(sort==='price-low')arr.sort((a,b)=>a.price-b.price);
+      if(sort==='price-high')arr.sort((a,b)=>b.price-a.price);
+      if(sort==='rating')arr.sort((a,b)=>Number(ratingFor(b))-Number(ratingFor(a)));
+      document.querySelector('#product-grid').innerHTML=arr.map(card).join('');
+      document.querySelector('#result-count').textContent=arr.length+' product'+(arr.length===1?'':'s');
+      document.querySelector('#no-results').style.display=arr.length?'none':'block';
+      document.querySelector('#categories').innerHTML=cats.map(([id,name,img])=>`
+        <button type="button" class="category ${id===type?'active':''}" data-category="${id}" aria-pressed="${id===type}" title="View ${name}">
+          <img src="${img}" alt="" loading="lazy"><span>${name}</span>
+        </button>`).join('');
     };
-    document.querySelector('#categories').addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(!b)return;tf.value=b.dataset.category;render()});
-    ['type-filter','color-filter','price-filter','deal-filter','sort-filter'].forEach(id=>document.getElementById(id).addEventListener('change',render));
-    document.querySelector('#search-input').addEventListener('input',render);render();
+    document.querySelector('#categories').addEventListener('click',e=>{
+      const b=e.target.closest('[data-category]');if(!b)return;
+      tf.value=b.dataset.category;render();
+    });
+    const ids=['type-filter','color-filter','size-filter','material-filter','price-filter','quilt-type-filter','pattern-filter','deal-filter','sort-filter'];
+    ids.forEach(id=>document.getElementById(id).addEventListener('change',render));
+    document.querySelector('#search-input').addEventListener('input',render);
+    const toggle=document.querySelector('#toggle-filters');
+    const extra=document.querySelector('#extra-filters');
+    toggle.addEventListener('click',()=>{extra.hidden=!extra.hidden;toggle.setAttribute('aria-expanded',String(!extra.hidden));});
+    document.querySelector('#clear-filters').addEventListener('click',()=>{
+      ids.forEach(id=>document.getElementById(id).selectedIndex=0);
+      document.querySelector('#search-input').value='';
+      render();
+    });
+    render();
   };
 
   const reviewStars = count => `<span class="review-stars" aria-label="${count} out of 5 stars">${'★'.repeat(count)}<span class="star-empty">${'☆'.repeat(5-count)}</span></span>`;

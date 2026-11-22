@@ -1,1 +1,41 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quilts & Cozy Bedding | CozyNest Home</title><link rel="stylesheet" href="styles.css"><script defer src="app.js"></script></head><body data-page="home"><div id="site-header"></div><main class="container"><div class="breadcrumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Bedding &nbsp;/&nbsp; Heated Blankets & Cozy Bedding</div><h1 class="page-title">QUILTS & COZY BEDDING</h1><p class="subtitle">Discover the first addition to the CozyNest collection: the European Linen Cotton Stitch Quilt in Natural.</p><div id="categories" class="categories"></div><div class="filters"><div class="filter-left"><div class="pill">⚙ &nbsp; Product Type <select id="type-filter" aria-label="Product type"><option value="all">All</option><option value="heated">Heated blankets</option><option value="quilt">Quilts</option><option value="throw">Throws</option><option value="coverlet">Coverlets</option><option value="gift">Gift sets</option></select></div><div class="pill">Color <select id="color-filter" aria-label="Color"><option value="all">All</option><option>Ivory</option><option>Olive</option><option>Charcoal</option><option>Rose</option><option>Floral</option></select></div><div class="pill">Price Range <select id="price-filter" aria-label="Price range"><option value="all">All</option><option value="0-50">Under $50</option><option value="50-100">$50–$100</option><option value="100-150">$100–$150</option><option value="150-999">$150+</option></select></div><div class="pill">Deals <select id="deal-filter" aria-label="Sale filter"><option value="all">All items</option><option value="sale">On sale now</option></select></div></div><div class="results"><span id="result-count">8 products</span> &nbsp; <span class="pill">Sort By <select id="sort-filter" aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="rating">Highest rated</option></select></span></div></div><section id="product-grid" class="grid" aria-label="Products"></section><p id="no-results" class="empty" style="display:none">No products match your filters. Try another selection.</p><section class="suggested"><h2 class="section-title">Thoughtfully made for cozy nights</h2><p class="subtitle">Explore soft throws, thoughtfully coordinated bedding bundles, and heated blankets made for cozy nights.</p></section></main><div id="site-footer"></div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quilts & Bedspreads | CozyNest Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+  <main class="container collection-main">
+    <div class="breadcrumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; Quilts and Coverlets</div>
+    <h1 class="page-title">QUILTS &amp; BEDSPREADS</h1>
+    <div id="categories" class="categories" aria-label="Shop by category"></div>
+    <div class="filters catalog-filters" aria-label="Filter and sort products">
+      <div class="filter-left">
+        <button type="button" id="toggle-filters" class="pill filter-trigger" aria-expanded="false" aria-controls="extra-filters"><span aria-hidden="true">☷</span> Filter</button>
+        <label class="pill">Product Type <select id="type-filter" aria-label="Product type">
+          <option value="all">All</option><option value="quilt">Quilts</option><option value="comforter">Comforters</option><option value="coverlet">Coverlets</option><option value="heated">Bed Blankets</option><option value="set">Quilt &amp; Coverlet Sets</option><option value="sham">Shams</option>
+        </select></label>
+        <label class="pill">Color <select id="color-filter" aria-label="Color"><option value="all">All</option></select></label>
+        <label class="pill">Size <select id="size-filter" aria-label="Size"><option value="all">All</option></select></label>
+        <label class="pill">Material <select id="material-filter" aria-label="Material"><option value="all">All</option><option value="linen-cotton">Linen / Cotton</option><option value="cotton">Cotton</option><option value="polyester">Polyester</option></select></label>
+        <label class="pill">Price Range <select id="price-filter" aria-label="Price range"><option value="all">All</option><option value="0-50">Under $50</option><option value="50-100">$50–$100</option><option value="100-150">$100–$150</option><option value="150-999999">$150+</option></select></label>
+        <label class="pill">Quilt Type <select id="quilt-type-filter" aria-label="Quilt type"><option value="all">All</option><option value="stitched">Stitched</option><option value="patchwork">Patchwork</option><option value="channel">Channel stitched</option></select></label>
+        <label class="pill">Pattern <select id="pattern-filter" aria-label="Pattern"><option value="all">All</option><option value="textured">Textured</option><option value="solid">Solid</option><option value="floral">Floral</option><option value="striped">Striped</option></select></label>
+      </div>
+      <div class="results"><span id="result-count">1 product</span><label class="pill sort-pill">Sort By <select id="sort-filter" aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="rating">Highest rated</option></select></label></div>
+    </div>
+    <div id="extra-filters" class="extra-filters" hidden>
+      <label>Deals <select id="deal-filter" aria-label="Sale filter"><option value="all">All products</option><option value="sale">On sale</option></select></label>
+      <button type="button" id="clear-filters" class="reset-filters">Clear all filters</button>
+    </div>
+    <section id="product-grid" class="grid" aria-label="Products"></section>
+    <p id="no-results" class="empty catalog-empty" style="display:none">No products match those filters yet. Try All or Quilts.</p>
+    <section class="suggested"><h2 class="section-title">Thoughtfully made for cozy nights</h2><p class="subtitle">Explore the CozyNest bedding collection. More quilts, coverlets and shams will be added as our catalog grows.</p></section>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>
