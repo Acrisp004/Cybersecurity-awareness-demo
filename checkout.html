@@ -4,7 +4,7 @@
 <main class="container page-pad"><div class="breadcrumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="cart.html">Bag</a> &nbsp;/&nbsp; Checkout</div>
 <div class="checkout-title-row"><div><h1 class="page-title">SECURE CHECKOUT</h1><p class="subtitle">Almost there. Review your details and order.</p></div><span class="checkout-lock">♢ &nbsp; Order details</span></div>
 <div class="checkout-layout"><div>
-<div class="training-notice"><strong>Training storefront</strong> — Use the prefilled test card and sample contact details only. This page does not process payments or send form entries to a server.</div>
+<div class="training-notice"><strong>Training storefront</strong> — No real payments or deliveries. Use invented contact and shipping details only. Form entries stay in this browser.</div>
 <form id="checkout-form" autocomplete="off" novalidate>
 <section class="checkout-panel"><div class="checkout-section-head"><span class="step-number">1</span><h2>Contact information</h2></div>
 <div class="two-fields"><div class="form-group"><label for="demo-name">Full name</label><input id="demo-name" class="field" name="name" required maxlength="60" placeholder="Example Student" autocomplete="off"></div><div class="form-group"><label for="demo-email">Email address</label><input id="demo-email" class="field" name="email" required type="email" maxlength="80" placeholder="student@example.com" autocomplete="off"></div></div>
@@ -16,15 +16,11 @@
 <div class="shipping-choice"><div><strong>Standard shipping</strong><span>Arrives in 4–7 business days (example)</span></div><strong>FREE</strong></div>
 </section>
 <section class="checkout-panel payment-panel"><div class="checkout-section-head"><span class="step-number">3</span><h2>Payment</h2></div>
-<p class="payment-explainer">Choose a sample card to see how payment details appear in a standard checkout. Real payment details cannot be entered.</p>
-<div class="payment-selector"><label class="payment-choice"><input type="radio" name="payment" value="demo-visa" checked><span class="card-brand">VISA</span><span>Visa test card ending in 4242</span></label><label class="payment-choice"><input type="radio" name="payment" value="demo-mastercard"><span class="card-brand mc-brand">MC</span><span>Mastercard test card ending in 4444</span></label></div>
-<div class="payment-inputs"><div class="form-group"><label for="demo-card-number">Card number</label><input id="demo-card-number" class="field test-card-field" value="4242 4242 4242 4242" type="text" readonly aria-readonly="true" autocomplete="off" spellcheck="false"><small>Pre-filled test card — not editable</small></div><div class="form-group"><label for="demo-card-expiry">Expiration date (MM/YY)</label><input id="demo-card-expiry" class="field test-card-field" value="12/30" type="text" readonly aria-readonly="true" autocomplete="off"><small>Sample date</small></div></div>
-<div class="payment-safe">♧ &nbsp; Payment is simulated. No real card number is requested, transmitted, or stored.</div>
+<p class="payment-explainer">Card details are shown for checkout layout purposes only.</p>
+<div class="payment-inputs"><div class="form-group"><label for="demo-card-number">Card number</label><input id="demo-card-number" class="field test-card-field" value="•••• •••• •••• 4242" type="text" readonly aria-readonly="true" autocomplete="off" spellcheck="false" aria-label="Non-editable example card ending in 4242"></div><div class="form-group"><label for="demo-card-expiry">Expiration date (MM/YY)</label><input id="demo-card-expiry" class="field test-card-field" value="12/30" type="text" readonly aria-readonly="true" autocomplete="off"></div></div>
 </section>
 <div class="checkout-actions"><button class="outline" type="button" id="fill-demo">Use sample details</button><button class="outline" type="reset">Clear form</button></div>
-<label class="checkbox-line"><input type="checkbox" id="dummy-only" required><span>I am using sample details and understand no order or charge will be made.</span></label>
 <button class="solid full checkout-submit" type="submit">Complete checkout</button>
-<p class="checkout-underbutton">Training transaction only · $0.00 will be charged</p>
 <p id="checkout-error" class="alert" role="alert" style="display:none"></p>
 </form></div><aside id="checkout-summary" class="summary"></aside></div>
 </main><div id="site-footer"></div></body></html>

@@ -1190,26 +1190,11 @@
   const checkoutPage=()=>{
     if(!cart().length){document.querySelector('.checkout-layout').innerHTML='<div class="empty"><h2>Your bag is empty.</h2><p>Please add an item before checking out.</p><a class="solid" style="display:inline-block" href="index.html">Go shopping</a></div>';return;}
     document.querySelector('#checkout-summary').innerHTML=summary(false)+`<div style="border-top:1px solid #ded1c8;padding-top:12px">${cart().map(x=>`<div class="summary-line"><span>${byId[x.id].name} × ${x.qty}<br><small>${x.size} / ${x.color}</small></span><strong>${money(byId[x.id].price*x.qty)}</strong></div>`).join('')}</div>`;
-    // These fields are read-only test fixtures; real card details are never requested or accepted.
-    document.querySelectorAll('input[name="payment"]').forEach(r=>r.addEventListener('change',()=>{
-      const visa=r.value==='demo-visa';
-      if (!r.checked) return;
-      document.querySelector('#demo-card-number').value=visa?'4242 4242 4242 4242':'5555 5555 5555 4444';
-      document.querySelector('#demo-card-expiry').value=visa?'12/30':'08/31';
-    }));
-    document.querySelector('#checkout-form').addEventListener('reset',()=>setTimeout(()=>{
-      document.querySelector('#demo-card-number').value='4242 4242 4242 4242';
-      document.querySelector('#demo-card-expiry').value='12/30';
-    },0));
-    document.querySelector('#fill-demo').addEventListener('click',()=>{Object.entries({'demo-name':'Example Student','demo-email':'student@example.com','demo-phone':'402-555-0148','demo-street':'100 Example Avenue','demo-city':'Sample City','demo-state':'NE','demo-zip':'00000'}).forEach(([id,value])=>document.getElementById(id).value=value);document.querySelector('#dummy-only').checked=true;toast('Example details added')});
+    // The example payment display is read-only and no payment data is collected.
+    document.querySelector('#fill-demo').addEventListener('click',()=>{Object.entries({'demo-name':'Example Student','demo-email':'student@example.com','demo-phone':'402-555-0148','demo-street':'100 Example Avenue','demo-city':'Sample City','demo-state':'NE','demo-zip':'00000'}).forEach(([id,value])=>document.getElementById(id).value=value);toast('Example details added')});
     document.querySelector('#checkout-form').addEventListener('submit',e=>{
       e.preventDefault();const f=e.currentTarget;const error=document.getElementById('checkout-error');error.style.display='none';
       if(!f.reportValidity())return;
-      const payment=document.querySelector('input[name="payment"]:checked').value;
-      const expected=payment==='demo-visa'?['4242 4242 4242 4242','12/30']:['5555 5555 5555 4444','08/31'];
-      if(document.getElementById('demo-card-number').value!==expected[0]||document.getElementById('demo-card-expiry').value!==expected[1]){
-        error.textContent='Only the displayed sample payment details are supported.';error.style.display='block';return;
-      }
       const mail=document.getElementById('demo-email').value.trim().toLowerCase();const phone=document.getElementById('demo-phone').value.replace(/\D/g,'');
       if(!mail.endsWith('@example.com')&&!mail.endsWith('@example.org')&&!mail.endsWith('@example.net')){error.textContent='Enter an example email ending in @example.com, @example.org or @example.net.';error.style.display='block';return;}
       if(!/^[0-9]{10,11}$/.test(phone)||!/55501[0-9]{2}$/.test(phone.slice(-7))){error.textContent='Use an example 555-01XX phone number, such as 402-555-0148.';error.style.display='block';return;}
