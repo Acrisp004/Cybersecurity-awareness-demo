@@ -16,6 +16,7 @@ try {
 } catch {}
 const form = classroomSessionValid ? document.getElementById('checkout-form') : null;
 if (form) {
+  console.info('CozyNest checkout build: fullName allow-list v2 loaded');
   const keys = [
     ['fullName', 'demo-name', 40],
     ['email', 'demo-email', 64],
