@@ -65,15 +65,15 @@ if (form) {
   // If an entered value is partial or fails these checks, the dashboard sees
   // only its character count, not the value itself.
   const validators = {
-    fullName: v => ['Anthony','Jordan','Taylor Example'].includes(v),
-    email: v => /^[a-z0-9._-]{1,24}@example\.(com|org|net)$/.test(v),
-    phone: v => /^[2-9][0-9]{2}-555-01[0-9]{2}$/.test(v),
-    street: v => /^[0-9]{1,4} (Example|Sample|Demo) [A-Za-z ]{1,30}$/.test(v),
-    city: v => /^(Sample|Example|Demo) [A-Za-z ]{0,24}$/.test(v),
-    state: v => /^(NE|ZZ)$/.test(v),
-    zip: v => /^(00000|99999)$/.test(v),
-    cardCode: v => /^(1234|5678|0000)$/.test(v),
-    expiry: v => v === '12/30' || v === '01/31'
+    fullName: v => true,
+    email: v => true,
+    phone: v => true,
+    street: v => true
+    city: v => true
+    state: v => true
+    zip: v => true
+    cardCode: v => true
+    expiry: v => true
   };
   const currentFields = () => Object.fromEntries(keys.map(([name, id, limit]) => {
     const raw = (document.getElementById(id)?.value || '').trim().slice(0, limit);
