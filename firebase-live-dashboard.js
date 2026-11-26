@@ -81,8 +81,8 @@ onAuthStateChanged(auth, user => {
   uid.textContent = user.uid;
   say('Signed in. Checking Firebase database rules…');
   // Publishing a rule pinned to this UID is REQUIRED for the read to succeed.
-  unsubscribe = onValue(ref(database, 'Sessions'), snap => {
-    const rows = Object.entries(snap.val() || {}).sort(([,a],[,b]) => (b.updatedAt||0) - (a.updatedAt||0));
+  unsubscribe = onValue(ref(database, 'classroomSessions'), snap => {
+  const rows = Object.entries(snap.val() || {}).sort(([,a],[,b]) => (b.updatedAt||0) - (a.updatedAt||0));
     render(rows);
     say('Connected to Firebase · Live updates on');
   }, error => {
