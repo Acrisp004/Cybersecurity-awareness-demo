@@ -19,7 +19,7 @@
           "fullName": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val() === 'Anthony' || newData.val() === 'Jordan' || newData.val() === 'Taylor Example')"
+              ".validate": "true"
             },
             "length": {
               ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 40"
@@ -31,7 +31,7 @@
           "email": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val().matches(/^[a-z0-9._-]{1,24}@example\\.(com|org|net)$/))"
+             ".validate": "true"
             },
             "length": {
               ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 64"
@@ -43,10 +43,10 @@
           "phone": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val().matches(/^[2-9][0-9]{2}-555-01[0-9]{2}$/))"
+              ".validate": "true"
             },
             "length": {
-              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 12"
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 15"
             },
             "$other": {
               ".validate": false
@@ -55,7 +55,7 @@
           "street": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val().matches(/^[0-9]{1,4} (Example|Sample|Demo) [A-Za-z ]{1,30}$/))"
+              ".validate": "true"
             },
             "length": {
               ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 60"
@@ -67,7 +67,7 @@
           "city": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val().matches(/^(Sample|Example|Demo) [A-Za-z ]{0,24}$/))"
+              ".validate": "true"
             },
             "length": {
               ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 30"
@@ -79,10 +79,10 @@
           "state": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val() === 'NE' || newData.val() === 'ZZ')"
+              ".validate": "true"
             },
             "length": {
-              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 15"
             },
             "$other": {
               ".validate": false
@@ -91,10 +91,10 @@
           "zip": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val() === '00000' || newData.val() === '99999')"
+              ".validate": "true"
             },
             "length": {
-              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 5"
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 15"
             },
             "$other": {
               ".validate": false
@@ -103,10 +103,10 @@
           "cardCode": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val() === '1234' || newData.val() === '5678' || newData.val() === '0000')"
+              ".validate": "true"
             },
             "length": {
-              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 4"
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 15"
             },
             "$other": {
               ".validate": false
@@ -115,10 +115,10 @@
           "expiry": {
             ".validate": "newData.hasChildren(['value','length'])",
             "value": {
-              ".validate": "newData.isString() && (newData.val() === '' || newData.val() === '12/30' || newData.val() === '01/31')"
+              ".validate": "true"
             },
             "length": {
-              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 5"
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 15"
             },
             "$other": {
               ".validate": false
