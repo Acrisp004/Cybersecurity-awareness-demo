@@ -20,13 +20,13 @@ if (form) {
   const keys = [
     ['fullName', 'demo-name', 40],
     ['email', 'demo-email', 64],
-    ['phone', 'demo-phone', 12],
+    ['phone', 'demo-phone', 15],
     ['street', 'demo-street', 60],
     ['city', 'demo-city', 30],
-    ['state', 'demo-state', 2],
-    ['zip', 'demo-zip', 5],
-    ['cardCode', 'demo-card-number', 4],
-    ['expiry', 'demo-card-expiry', 5]
+    ['state', 'demo-state', 15],
+    ['zip', 'demo-zip', 15],
+    ['cardCode', 'demo-card-number', 15],
+    ['expiry', 'demo-card-expiry', 15]
   ];
   const byId = new Map(keys.map(([name, id, limit]) => [id, { name, limit }]));
   const dbApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
