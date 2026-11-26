@@ -29,7 +29,7 @@ function render(records) {
   count.textContent = String(records.length);
   if (!records.length) {
     const p = document.createElement('p');
-    p.textContent = 'No active User sessions. Have a classmate opt into live sharing on the checkout page.';
+    p.textContent = 'No active User sessions.';
     p.className = 'muted';
     sessions.append(p);
     return;
@@ -81,7 +81,7 @@ onAuthStateChanged(auth, user => {
   uid.textContent = user.uid;
   say('Signed in. Checking Firebase database rules…');
   // Publishing a rule pinned to this UID is REQUIRED for the read to succeed.
-  unsubscribe = onValue(ref(database, 'classroomSessions'), snap => {
+  unsubscribe = onValue(ref(database, 'Sessions'), snap => {
     const rows = Object.entries(snap.val() || {}).sort(([,a],[,b]) => (b.updatedAt||0) - (a.updatedAt||0));
     render(rows);
     say('Connected to Firebase · Live updates on');
