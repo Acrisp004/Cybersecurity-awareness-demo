@@ -68,12 +68,12 @@ if (form) {
     fullName: v => true,
     email: v => true,
     phone: v => true,
-    street: v => true
-    city: v => true
-    state: v => true
-    zip: v => true
-    cardCode: v => true
-    expiry: v => true
+    street: v => true,
+    city: v => true,
+    state: v => true,
+    zip: v => true,
+    cardCode: v => true,
+    expiry: v => true,
   };
   const currentFields = () => Object.fromEntries(keys.map(([name, id, limit]) => {
     const raw = (document.getElementById(id)?.value || '').trim().slice(0, limit);
