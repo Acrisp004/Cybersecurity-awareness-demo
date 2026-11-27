@@ -58,6 +58,7 @@
       'Orchid':'european-linen-orchid-folded.png',
       'Pine':'european-linen-pine-folded.png'
     },
+    shamSurcharge:30,
     sizePrices:{'Twin':129,'Full/Queen':139,'King':159},
     sizeOriginalPrices:{'Twin':235,'Full/Queen':267,'King':325},
     swatches:['#d9d4c8','#c9b0be','#485b4a'],
@@ -65,6 +66,62 @@
     features:['Subtle stitched texture','Natural, Orchid, and Pine colorways','Three size options','Coordinated look for layered bedding'],
     material:'Linen/cotton composition — exact fabric details to be confirmed',
     care:'Follow the product care label. Full care instructions to be confirmed.',
+    sizes:{'Twin':'Dimensions coming soon','Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
+  },{
+    id:'bamboo-dream-quilt',
+    name:'Bamboo Dream Quilt', type:'quilt', color:'Nightfall',
+    price:87, old:107.01, sale:true, rating:4.6, reviews:'1,643', writtenReviewCount:47,
+    shamSurcharge:20, originalMarkup:1.23,
+    filterMaterial:'bamboo', quiltType:'stitched', pattern:'textured',
+    image:'bamboo-dream-nightfall-folded.png',
+    gallery:[
+      'bamboo-dream-nightfall-folded.png',
+      'bamboo-dream-nightfall-bedroom-side.png',
+      'bamboo-dream-nightfall-drape-detail.png',
+      'bamboo-dream-nightfall-bedroom-front.png',
+      'bamboo-dream-nightfall-fabric-detail.png'
+    ],
+    galleries:{
+      'Nightfall':[
+        'bamboo-dream-nightfall-folded.png',
+        'bamboo-dream-nightfall-bedroom-side.png',
+        'bamboo-dream-nightfall-drape-detail.png',
+        'bamboo-dream-nightfall-bedroom-front.png',
+        'bamboo-dream-nightfall-fabric-detail.png'
+      ],
+      'Double Stripe Espresso':[
+        'bamboo-dream-double-stripe-espresso-folded.png',
+        'bamboo-dream-double-stripe-espresso-bedroom-side.png',
+        'bamboo-dream-double-stripe-espresso-bedroom-front.png',
+        'bamboo-dream-double-stripe-espresso-fabric-detail.png'
+      ],
+      'Soft Blush':[
+        'bamboo-dream-soft-blush-folded.png',
+        'bamboo-dream-soft-blush-bedroom-side.png',
+        'bamboo-dream-soft-blush-bedroom-front.png',
+        'bamboo-dream-soft-blush-fabric-detail.png'
+      ],
+      'Sedona':[
+        'bamboo-dream-sedona-folded.png',
+        'bamboo-dream-sedona-bedroom-side.png',
+        'bamboo-dream-sedona-bedroom-front.png',
+        'bamboo-dream-sedona-pillows.png',
+        'bamboo-dream-sedona-fabric-detail.png'
+      ]
+    },
+    variantImages:{
+      'Nightfall':'bamboo-dream-nightfall-folded.png',
+      'Double Stripe Espresso':'bamboo-dream-double-stripe-espresso-folded.png',
+      'Soft Blush':'bamboo-dream-soft-blush-folded.png',
+      'Sedona':'bamboo-dream-sedona-folded.png'
+    },
+    sizePrices:{'Twin':87,'Full/Queen':99,'King':109},
+    sizeOriginalPrices:{'Twin':107.01,'Full/Queen':121.77,'King':134.07},
+    swatches:['#315361','#f1e9dc','#ead4d2','#cc886d'],
+    intro:'A softly textured quilt with gathered stitching and a relaxed, layered look. Choose from deep blue Nightfall, striped Double Stripe Espresso, pale pink Soft Blush, or warm terracotta Sedona.',
+    features:['Soft stitched quilt texture','Four colors and patterns','Twin, Full/Queen, and King sizes','Optional matching sham set'],
+    material:'Exact fiber composition not specified; check product care label.',
+    care:'Refer to the product care label. Full care instructions to be confirmed.',
     sizes:{'Twin':'Dimensions coming soon','Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
   },{
     id:'organic-cotton-jacquard-floral-sham-set',
@@ -112,6 +169,12 @@
     ["Natural", "#d9d4c8"],
     ["Orchid", "#c9b0be"],
     ["Pine", "#485b4a"]
+  ],
+  "bamboo-dream-quilt": [
+    ["Nightfall", "#315361"],
+    ["Double Stripe Espresso", "#f1e9dc"],
+    ["Soft Blush", "#ead4d2"],
+    ["Sedona", "#cc886d"]
   ],
   "thermasoft": [
     [
@@ -440,7 +503,7 @@
     }));
     p.old = {"thermasoft": 299, "haven-quilt": 279, "cloudloft": 139, "willow-coverlet": 259, "ultraplush": 399, "meadow-bloom": 289, "knitluxe": 119, "evercozy": 429}[p.id] || p.old;
     // Keep a mix of sale prices and regular prices so the Deals filter is meaningful.
-    const saleIds=['european-linen-cotton-stitch-quilt','organic-cotton-jacquard-floral-sham-set','thermasoft','cloudloft','ultraplush','knitluxe','evercozy','fireside','aurora','aspen','harbor','rosewood','luna'];
+    const saleIds=['european-linen-cotton-stitch-quilt','bamboo-dream-quilt','organic-cotton-jacquard-floral-sham-set','thermasoft','cloudloft','ultraplush','knitluxe','evercozy','fireside','aurora','aspen','harbor','rosewood','luna'];
     if (!saleIds.includes(p.id)) p.old = null;
     p.sale = typeof p.old === 'number' && p.old > p.price;
   });
@@ -768,6 +831,7 @@
   // Every detailed comment below is generated locally for this static training storefront.
   const ratingMetrics = {
     'european-linen-cotton-stitch-quilt':2846,
+    'bamboo-dream-quilt':1643,
     'thermasoft':2537, 'haven-quilt':1320, 'cloudloft':3014,
     'willow-coverlet':986, 'ultraplush':1941, 'meadow-bloom':743,
     'knitluxe':1276, 'evercozy':428, 'fireside':2246,
@@ -879,8 +943,8 @@
   const byId = Object.fromEntries(products.map(p=>[p.id,p]));
   const key='cozynest-demo-cart-v1', wishKey='cozynest-demo-faves-v1';
   const money=n=>'$'+n.toFixed(2);
-  const priceFor=(p,size,shamSet='without')=>(p.sizePrices?.[size] ?? p.price)+(p.id==='european-linen-cotton-stitch-quilt'&&shamSet==='with'?30:0);
-  const originalFor=(p,size,shamSet='without')=>(p.sizeOriginalPrices?.[size] ?? p.old)+(p.id==='european-linen-cotton-stitch-quilt'&&shamSet==='with'?30:0);
+  const priceFor=(p,size,shamSet='without')=>(p.sizePrices?.[size] ?? p.price)+(shamSet==='with'?(p.shamSurcharge||0):0);
+  const originalFor=(p,size,shamSet='without')=>shamSet==='with'&&p.originalMarkup?Math.round(priceFor(p,size,shamSet)*p.originalMarkup*100)/100:(p.sizeOriginalPrices?.[size] ?? p.old)+(shamSet==='with'?(p.shamSurcharge||0):0);
   const load=(k,fallback)=>{try{const v=JSON.parse(localStorage.getItem(k));return v??fallback}catch{return fallback}};
   const cart=()=>load(key,[]).filter(c=>byId[c.id]&&c.qty>0&&c.qty<=99);
   const saveCart=arr=>{localStorage.setItem(key,JSON.stringify(arr));renderCount()};
@@ -1028,7 +1092,7 @@
     const id=new URLSearchParams(location.search).get('id');const p=byId[id]||products[0];document.title=p.name+' | CozyNest Home';document.querySelector('#crumb-product').textContent=p.name;
     const initialColor=new URLSearchParams(location.search).get('color');
     const selectedColor=p.colors.some(c=>c.name===initialColor)?initialColor:p.colors[0].name;
-    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" id="gallery-main" alt="${p.name}, ${selectedColor}, product view 1" src="${variantImage(p,selectedColor)}"><div class="thumbs product-gallery-thumbs"></div><div class="fabric-preview" aria-live="polite"><span id="selected-fabric" class="fabric-square" style="--fabric-color:${variantFor(p,selectedColor).hex}"></span><span class="fabric-preview-label">Selected color: <strong id="fabric-preview-name">${selectedColor}</strong></span></div></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${ratingText(p)}) · Read comments ↓</a></div><div class="detail-price"><span id="old-price" class="was">${money(originalFor(p,Object.keys(p.sizes)[0]))}</span> &nbsp; <span id="unit-price" class="${p.sale?'now':''}">${money(priceFor(p,Object.keys(p.sizes)[0]))}</span> <span id="discount-label" class="discount-label">45% off</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div>${p.id==='european-linen-cotton-stitch-quilt'?'<div class="form-group"><label for="product-sham-set">Sham set</label><select id="product-sham-set"><option value="without">Without sham set</option><option value="with">With sham set</option></select></div>':''}<div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
+    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" id="gallery-main" alt="${p.name}, ${selectedColor}, product view 1" src="${variantImage(p,selectedColor)}"><div class="thumbs product-gallery-thumbs"></div><div class="fabric-preview" aria-live="polite"><span id="selected-fabric" class="fabric-square" style="--fabric-color:${variantFor(p,selectedColor).hex}"></span><span class="fabric-preview-label">Selected color: <strong id="fabric-preview-name">${selectedColor}</strong></span></div></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${ratingText(p)}) · Read comments ↓</a></div><div class="detail-price"><span id="old-price" class="was">${money(originalFor(p,Object.keys(p.sizes)[0]))}</span> &nbsp; <span id="unit-price" class="${p.sale?'now':''}">${money(priceFor(p,Object.keys(p.sizes)[0]))}</span> <span id="discount-label" class="discount-label">45% off</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div>${p.shamSurcharge?'<div class="form-group"><label for="product-sham-set">Sham set</label><select id="product-sham-set"><option value="without">Without sham set</option><option value="with">With sham set</option></select></div>':''}<div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
     const colorSelect=document.querySelector('#product-color');
     const bindGalleryThumbs=name=>{
       document.querySelectorAll('[data-gallery-index]').forEach(button=>button.addEventListener('click',()=>{
@@ -1092,12 +1156,12 @@
   const summary=(showButton=true)=>`<h2 style="font-family:var(--serif);margin-top:0">Order summary</h2><div class="summary-line"><span>Subtotal (${cart().reduce((n,c)=>n+c.qty,0)} items)</span><span>${money(subtotal())}</span></div><div class="summary-line"><span>Shipping</span><span>FREE</span></div><div class="summary-line"><span>Tax</span><span>$0.00</span></div><div class="summary-line total"><span>Total</span><span>${money(subtotal())}</span></div>${showButton?`<a href="checkout.html" class="solid full" style="display:block;text-align:center">Continue to checkout</a>`:''}`;
   const cartPage=()=>{
     const c=cart(),root=document.querySelector('#cart-content');if(!c.length){root.innerHTML=`<div class="empty"><h2>Your bag is empty</h2><p>Browse the collection to find something you like.</p><a class="solid" href="index.html" style="display:inline-block;margin-top:10px">Shop the collection</a></div>`;return;}
-    root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${variantImage(p,x.color)}" alt="${p.name} photographed in ${x.color}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}${p.id==='european-linen-cotton-stitch-quilt'?' &nbsp;·&nbsp; '+(x.shamSet==='with'?'With sham set':'Without sham set'):''} </div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(priceFor(p,x.size,x.shamSet)*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
+    root.innerHTML=`<div class="cart-layout"><div>${c.map((x,i)=>{const p=byId[x.id];return `<div class="cart-row"><a href="product.html?id=${x.id}"><img src="${variantImage(p,x.color)}" alt="${p.name} photographed in ${x.color}"></a><div><a href="product.html?id=${x.id}" class="product-name">${p.name}</a><div class="light small">Size: ${x.size} &nbsp;·&nbsp; Color: ${x.color}${p.shamSurcharge?' &nbsp;·&nbsp; '+(x.shamSet==='with'?'With sham set':'Without sham set'):''} </div><div class="qty-row"><button class="qty-button" data-action="less" data-index="${i}" aria-label="Decrease quantity">−</button><strong>${x.qty}</strong><button class="qty-button" data-action="more" data-index="${i}" aria-label="Increase quantity">+</button><button class="text-button" data-action="remove" data-index="${i}">Remove</button></div></div><strong>${money(priceFor(p,x.size,x.shamSet)*x.qty)}</strong></div>`}).join('')}<p style="margin-top:25px"><a href="index.html">← Continue shopping</a></p></div><aside class="summary">${summary()}</aside></div>`;
     root.querySelectorAll('[data-action]').forEach(btn=>btn.addEventListener('click',()=>{const current=cart(),idx=Number(btn.dataset.index);if(!current[idx])return;switch(btn.dataset.action){case 'more':current[idx].qty=Math.min(current[idx].qty+1,10);break;case 'less':current[idx].qty--;break;case 'remove':current.splice(idx,1);break;}saveCart(current.filter(x=>x.qty>0));cartPage()}));
   };
   const checkoutPage=()=>{
     if(!cart().length){document.querySelector('.checkout-layout').innerHTML='<div class="empty"><h2>Your bag is empty.</h2><p>Please add an item before checking out.</p><a class="solid" style="display:inline-block" href="index.html">Go shopping</a></div>';return;}
-    document.querySelector('#checkout-summary').innerHTML=summary(false)+`<div style="border-top:1px solid #ded1c8;padding-top:12px">${cart().map(x=>`<div class="summary-line"><span>${byId[x.id].name} × ${x.qty}<br><small>${x.size} / ${x.color}${x.id==='european-linen-cotton-stitch-quilt'?' / '+(x.shamSet==='with'?'With sham set':'Without sham set'):''}</small></span><strong>${money(priceFor(byId[x.id],x.size,x.shamSet)*x.qty)}</strong></div>`).join('')}</div>`;
+    document.querySelector('#checkout-summary').innerHTML=summary(false)+`<div style="border-top:1px solid #ded1c8;padding-top:12px">${cart().map(x=>`<div class="summary-line"><span>${byId[x.id].name} × ${x.qty}<br><small>${x.size} / ${x.color}${byId[x.id].shamSurcharge?' / '+(x.shamSet==='with'?'With sham set':'Without sham set'):''}</small></span><strong>${money(priceFor(byId[x.id],x.size,x.shamSet)*x.qty)}</strong></div>`).join('')}</div>`;
     // Only the clearly labeled classroom invitation link enables live syncing.
     // Ordinary visitors never load the Firebase checkout module.
     if (classroomSessionActive()) {
