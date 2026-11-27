@@ -123,6 +123,82 @@
     material:'Exact fiber composition not specified; check product care label.',
     care:'Refer to the product care label. Full care instructions to be confirmed.',
     sizes:{'Twin':'Dimensions coming soon','Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
+  },
+  {
+    id:'organic-cotton-hand-stitched-quilt-set',
+    name:'Organic Cotton Hand Stitched Quilt Set', type:'quilt', color:'White',
+    price:144, old:null, sale:false, rating:4.7, reviews:'830', writtenReviewCount:72,
+    filterMaterial:'organic-cotton', quiltType:'stitched', pattern:'textured',
+    image:'organic-hand-stitched-white-folded.png',
+    gallery:[
+      'organic-hand-stitched-white-folded.png',
+      'organic-hand-stitched-white-bedroom-front.png',
+      'organic-hand-stitched-white-bedroom-side.png',
+      'organic-hand-stitched-white-bed-closeup.png',
+      'organic-hand-stitched-white-pillows.png',
+      'organic-hand-stitched-white-fabric-detail.png'
+    ],
+    galleries:{
+      'White': [
+        'organic-hand-stitched-white-folded.png',
+        'organic-hand-stitched-white-bedroom-front.png',
+        'organic-hand-stitched-white-bedroom-side.png',
+        'organic-hand-stitched-white-bed-closeup.png',
+        'organic-hand-stitched-white-pillows.png',
+        'organic-hand-stitched-white-fabric-detail.png'
+      ],
+      'Pine': [
+        'organic-hand-stitched-pine-folded.png',
+        'organic-hand-stitched-pine-bedroom-front.png',
+        'organic-hand-stitched-pine-bedroom-side.png',
+        'organic-hand-stitched-pine-pillows.png',
+        'organic-hand-stitched-pine-fabric-detail.png'
+      ],
+      'Stone': [
+        'organic-hand-stitched-stone-folded.png',
+        'organic-hand-stitched-stone-bedroom-front.png',
+        'organic-hand-stitched-stone-bedroom-side.png',
+        'organic-hand-stitched-stone-pillows.png',
+        'organic-hand-stitched-stone-fabric-detail.png'
+      ],
+      'Ocean': [
+        'organic-hand-stitched-ocean-folded.png',
+        'organic-hand-stitched-ocean-bedroom-front.png',
+        'organic-hand-stitched-ocean-bedroom-side.png',
+        'organic-hand-stitched-ocean-pillows.png',
+        'organic-hand-stitched-ocean-fabric-detail.png'
+      ],
+      'Espresso': [
+        'organic-hand-stitched-espresso-folded.png',
+        'organic-hand-stitched-espresso-bedroom-front.png',
+        'organic-hand-stitched-espresso-bedroom-side.png',
+        'organic-hand-stitched-espresso-pillows.png',
+        'organic-hand-stitched-espresso-fabric-detail.png'
+      ],
+      'Undyed': [
+        'organic-hand-stitched-undyed-folded.png',
+        'organic-hand-stitched-undyed-bedroom-front.png',
+        'organic-hand-stitched-undyed-bedroom-side.png',
+        'organic-hand-stitched-undyed-bed-closeup.png',
+        'organic-hand-stitched-undyed-pillows.png',
+        'organic-hand-stitched-undyed-fabric-detail.png'
+      ]
+    },
+    variantImages:{
+      'White':'organic-hand-stitched-white-folded.png',
+      'Pine':'organic-hand-stitched-pine-folded.png',
+      'Stone':'organic-hand-stitched-stone-folded.png',
+      'Ocean':'organic-hand-stitched-ocean-folded.png',
+      'Espresso':'organic-hand-stitched-espresso-folded.png',
+      'Undyed':'organic-hand-stitched-undyed-folded.png'
+    },
+    sizePrices:{'Twin':144,'Full/Queen':172,'King':199},
+    swatches:['#f8f7f2','#34443b','#aa9990','#59818a','#433530','#eee4c6'],
+    intro:'A hand-stitched organic cotton quilt set with a richly textured finish. Available in White, Pine, Stone, Ocean, Espresso, and Undyed for a layered bedroom look.',
+    features:['Hand-stitched quilt texture','Six available colors','Coordinated bedding look','Twin, Full/Queen, and King sizes'],
+    material:'Organic cotton; full fabric specifications to be confirmed.',
+    care:'Please refer to the care label; exact washing instructions were not provided.',
+    sizes:{'Twin':'Dimensions coming soon','Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
   },{
     id:'organic-cotton-jacquard-floral-sham-set',
     name:'Organic Cotton Jacquard Floral Sham Set', type:'sham', color:'Floral',
@@ -165,6 +241,14 @@
   }];
 
   const colorPalettes = {
+  "organic-cotton-hand-stitched-quilt-set": [
+    ["White", "#f8f7f2"],
+    ["Pine", "#34443b"],
+    ["Stone", "#aa9990"],
+    ["Ocean", "#59818a"],
+    ["Espresso", "#433530"],
+    ["Undyed", "#eee4c6"]
+  ],
   "european-linen-cotton-stitch-quilt": [
     ["Natural", "#d9d4c8"],
     ["Orchid", "#c9b0be"],
@@ -810,6 +894,7 @@
 
   // Sample comments for additional products (not submitted by customers).
   const reviewSeeds = {
+    "organic-cotton-hand-stitched-quilt-set": [["The stitching stands out", "The hand-stitched pattern adds character to plain bedding, and the White color keeps the room bright."], ["Love the Pine shade", "The Pine finish looks lovely layered with cream-colored sheets. I like the visible stitch detail."], ["Nice texture, check sizing", "The Undyed color works well in a neutral room. I would check the dimensions carefully before selecting a size."]],
     "fireside": [["Comfortable addition", "The fireside luxe heated blanket looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the slate color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
     "aurora": [["Comfortable addition", "The aurora sherpa heated throw looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the sage color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
     "cedar-ridge": [["Comfortable addition", "The cedar ridge quilted bedspread looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the sand color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
@@ -832,6 +917,7 @@
   const ratingMetrics = {
     'european-linen-cotton-stitch-quilt':2846,
     'bamboo-dream-quilt':1643,
+    'organic-cotton-hand-stitched-quilt-set':830,
     'thermasoft':2537, 'haven-quilt':1320, 'cloudloft':3014,
     'willow-coverlet':986, 'ultraplush':1941, 'meadow-bloom':743,
     'knitluxe':1276, 'evercozy':428, 'fireside':2246,
@@ -1092,7 +1178,7 @@
     const id=new URLSearchParams(location.search).get('id');const p=byId[id]||products[0];document.title=p.name+' | CozyNest Home';document.querySelector('#crumb-product').textContent=p.name;
     const initialColor=new URLSearchParams(location.search).get('color');
     const selectedColor=p.colors.some(c=>c.name===initialColor)?initialColor:p.colors[0].name;
-    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" id="gallery-main" alt="${p.name}, ${selectedColor}, product view 1" src="${variantImage(p,selectedColor)}"><div class="thumbs product-gallery-thumbs"></div><div class="fabric-preview" aria-live="polite"><span id="selected-fabric" class="fabric-square" style="--fabric-color:${variantFor(p,selectedColor).hex}"></span><span class="fabric-preview-label">Selected color: <strong id="fabric-preview-name">${selectedColor}</strong></span></div></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${ratingText(p)}) · Read comments ↓</a></div><div class="detail-price"><span id="old-price" class="was">${money(originalFor(p,Object.keys(p.sizes)[0]))}</span> &nbsp; <span id="unit-price" class="${p.sale?'now':''}">${money(priceFor(p,Object.keys(p.sizes)[0]))}</span> <span id="discount-label" class="discount-label">45% off</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div>${p.shamSurcharge?'<div class="form-group"><label for="product-sham-set">Sham set</label><select id="product-sham-set"><option value="without">Without sham set</option><option value="with">With sham set</option></select></div>':''}<div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
+    document.querySelector('#product-detail').innerHTML=`<section class="product-detail"><div><img class="large-image" id="gallery-main" alt="${p.name}, ${selectedColor}, product view 1" src="${variantImage(p,selectedColor)}"><div class="thumbs product-gallery-thumbs"></div><div class="fabric-preview" aria-live="polite"><span id="selected-fabric" class="fabric-square" style="--fabric-color:${variantFor(p,selectedColor).hex}"></span><span class="fabric-preview-label">Selected color: <strong id="fabric-preview-name">${selectedColor}</strong></span></div></div><div>${p.sale?'<span class="badge-sale" style="position:static;display:inline-block;margin-bottom:14px">On sale</span>':''}<h1 class="detail-name">${p.name}</h1><div class="rating"><a class="review-link" href="#customer-reviews" aria-label="Go to customer comments"><span class="stars">★</span> &nbsp; ${ratingFor(p)} (${ratingText(p)}) · Read comments ↓</a></div><div class="detail-price"><span id="old-price" class="was"${p.sale?'':' style="display:none"'}>${p.sale?money(originalFor(p,Object.keys(p.sizes)[0])):''}</span> &nbsp; <span id="unit-price" class="${p.sale?'now':''}">${money(priceFor(p,Object.keys(p.sizes)[0]))}</span> <span id="discount-label" class="discount-label"${p.sale?'':' style="display:none"'}>${p.sale?Math.round((1-priceFor(p,Object.keys(p.sizes)[0])/originalFor(p,Object.keys(p.sizes)[0]))*100)+'% off':''}</span></div><p class="detail-intro">${p.intro}</p><div class="form-group"><label for="product-size">Size</label><select id="product-size">${Object.keys(p.sizes).map(s=>`<option value="${s}">${s}</option>`).join('')}</select></div><div class="form-group"><label for="product-color">Color: <strong id="selected-color-name">${selectedColor}</strong></label><div id="detail-swatches" class="swatches detail-color-swatches" role="group" aria-label="Choose ${p.name} color">${swatchMarkup(p,selectedColor,'detail')}</div><select id="product-color" aria-label="Select color">${p.colors.map(c=>`<option value="${c.name}" ${c.name===selectedColor?'selected':''}>${c.name}</option>`).join('')}</select></div>${p.shamSurcharge?'<div class="form-group"><label for="product-sham-set">Sham set</label><select id="product-sham-set"><option value="without">Without sham set</option><option value="with">With sham set</option></select></div>':''}<div class="form-group"><label for="product-qty">Quantity</label><select id="product-qty">${[1,2,3,4,5,6,7,8,9,10].map(x=>`<option value="${x}">${x}</option>`).join('')}</select><p id="selected-total" class="small light" aria-live="polite">Total for 1 item: ${money(p.price)}</p></div><button class="solid full" id="add-to-bag">Add to bag — ${money(p.price)}</button><p class="light small">✓ Cozy textures &nbsp; ✓ Size options &nbsp; ✓ Easy-care materials</p><h2 class="section-title">Product details</h2><ul class="features">${p.features.map(x=>`<li>${x}</li>`).join('')}</ul><h2 class="section-title">Dimensions & materials</h2><table class="specs"><tbody><tr><td>Available sizes</td><td>${Object.entries(p.sizes).map(([s,d])=>`${s}: ${d}`).join('<br>')}</td></tr><tr><td>Material</td><td>${p.material}</td></tr><tr><td>Care instructions</td><td>${p.care}</td></tr><tr><td>Brand</td><td>CozyNest Home</td></tr></tbody></table></div></section>`;
     const colorSelect=document.querySelector('#product-color');
     const bindGalleryThumbs=name=>{
       document.querySelectorAll('[data-gallery-index]').forEach(button=>button.addEventListener('click',()=>{
@@ -1137,8 +1223,13 @@
       const unit=priceFor(p,size,shamSet), oldUnit=originalFor(p,size,shamSet);
       const total=money(unit*qty);
       document.querySelector('#unit-price').textContent=money(unit);
-      document.querySelector('#old-price').textContent=money(oldUnit);
-      document.querySelector('#discount-label').textContent=Math.round((1-unit/oldUnit)*100)+'% off';
+      const hasDiscount=typeof oldUnit==='number' && Number.isFinite(oldUnit) && oldUnit>unit;
+      const oldPriceEl=document.querySelector('#old-price');
+      oldPriceEl.style.display=hasDiscount?'':'none';
+      oldPriceEl.textContent=hasDiscount?money(oldUnit):'';
+      const discountEl=document.querySelector('#discount-label');
+      discountEl.style.display=hasDiscount?'':'none';
+      discountEl.textContent=hasDiscount?Math.round((1-unit/oldUnit)*100)+'% off':'';
       document.querySelector('#selected-total').textContent=`Total for ${qty} item${qty===1?'':'s'}: ${total}`;
       document.querySelector('#add-to-bag').textContent=`Add to bag — ${total}`;
     };
