@@ -239,6 +239,74 @@
     sizes:{'Standard':'Dimensions coming soon','King':'Dimensions coming soon'}
 
   },{
+    id:'european-linen-cotton-stitch-quilt-set',
+    name:'European Linen Cotton Stitch Quilt Set', type:'quilt', color:'Natural',
+    price:193, old:null, sale:false, rating:4.9, reviews:'5,000', writtenReviewCount:329,
+    filterMaterial:'linen-cotton', quiltType:'stitched', pattern:'textured',
+    image:'european-linen-quilt-set-natural-folded.png',
+    gallery:[
+      'european-linen-quilt-set-natural-folded.png',
+      'european-linen-quilt-set-natural-bedroom-front.png',
+      'european-linen-quilt-set-natural-bedroom-side.png',
+      'european-linen-quilt-set-natural-bedroom-side-detail.png',
+      'european-linen-quilt-set-natural-pillows.png',
+      'european-linen-quilt-set-natural-fabric-detail.png'
+    ],
+    galleries:{
+      'Natural': [
+        'european-linen-quilt-set-natural-folded.png',
+        'european-linen-quilt-set-natural-bedroom-front.png',
+        'european-linen-quilt-set-natural-bedroom-side.png',
+        'european-linen-quilt-set-natural-bedroom-side-detail.png',
+        'european-linen-quilt-set-natural-pillows.png',
+        'european-linen-quilt-set-natural-fabric-detail.png'
+      ],
+      'White': [
+        'european-linen-quilt-set-white-folded.png',
+        'european-linen-quilt-set-white-bedroom-front.png',
+        'european-linen-quilt-set-white-bedroom-side.png',
+        'european-linen-quilt-set-white-pillows.png',
+        'european-linen-quilt-set-white-fabric-detail.png',
+        'european-linen-quilt-set-white-stitching-detail.png'
+      ],
+      'Pine': [
+        'european-linen-quilt-set-pine-folded.png',
+        'european-linen-quilt-set-pine-bedroom-front.png',
+        'european-linen-quilt-set-pine-bedroom-side.png',
+        'european-linen-quilt-set-pine-pillows.png',
+        'european-linen-quilt-set-pine-fabric-detail.png'
+      ],
+      'Mist': [
+        'european-linen-quilt-set-mist-folded.png',
+        'european-linen-quilt-set-mist-bedroom-front.png',
+        'european-linen-quilt-set-mist-bedroom-side.png',
+        'european-linen-quilt-set-mist-bed-closeup.png',
+        'european-linen-quilt-set-mist-pillows.png',
+        'european-linen-quilt-set-mist-fabric-detail.png'
+      ],
+      'Orchid': [
+        'european-linen-quilt-set-orchid-folded.png',
+        'european-linen-quilt-set-orchid-bedroom-front.png',
+        'european-linen-quilt-set-orchid-bedroom-side.png',
+        'european-linen-quilt-set-orchid-pillows.png',
+        'european-linen-quilt-set-orchid-fabric-detail.png'
+      ]
+    },
+    variantImages:{
+      'Natural':'european-linen-quilt-set-natural-folded.png',
+      'White':'european-linen-quilt-set-white-folded.png',
+      'Pine':'european-linen-quilt-set-pine-folded.png',
+      'Mist':'european-linen-quilt-set-mist-folded.png',
+      'Orchid':'european-linen-quilt-set-orchid-folded.png'
+    },
+    sizePrices:{'Twin':193,'Full/Queen':217,'King':249},
+    swatches:['#d7d0c3','#f5f5f3','#3d5041','#b8c2c2','#d5bfcf'],
+    intro:'A quilt set with dimensional stitching and coordinated matching shams. Choose from Natural, White, Pine, Mist, and Orchid for a layered bedding look.',
+    features:['Coordinating quilt and matching shams included','Five color options','Textured stitching','Available in Twin, Full/Queen, and King'],
+    material:'Linen/cotton quilt set; exact fabric composition to be confirmed.',
+    care:'Follow the care label; detailed washing instructions not supplied.',
+    sizes:{'Twin':'Dimensions coming soon','Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
+  },{
     id:'silk-pick-stitch-quilt',
     name:'Silk Pick Stitch Quilt', type:'quilt', color:'Ivory',
     price:630, old:1312.50, sale:true, rating:4.1, reviews:'30', writtenReviewCount:5,
@@ -262,6 +330,13 @@
   }];
 
   const colorPalettes = {
+  "european-linen-cotton-stitch-quilt-set": [
+    ["Natural", "#d7d0c3"],
+    ["White", "#f5f5f3"],
+    ["Pine", "#3d5041"],
+    ["Mist", "#b8c2c2"],
+    ["Orchid", "#d5bfcf"]
+  ],
   "silk-pick-stitch-quilt": [["Ivory", "#f1eee8"]],
   "organic-cotton-hand-stitched-quilt-set": [
     ["White", "#f8f7f2"],
@@ -916,6 +991,13 @@
 
   // Sample comments for additional products (not submitted by customers).
   const reviewSeeds = {
+    "european-linen-cotton-stitch-quilt-set": [
+      ["Lovely natural texture", "The Natural shade looks great with neutral sheets, and I like the coordinated quilt and shams."],
+      ["The Pine color stands out", "The deep green color looks cozy and gives the stitched pattern a lot of character."],
+      ["Beautiful soft Orchid", "The Orchid color brings a gentle blush tone to the room. The matching pillows finish the look."],
+      ["Check the size before choosing", "I would compare Twin, Full/Queen, and King measurements before selecting a set."],
+      ["Mist is a versatile shade", "The light gray Mist option blends well with both warm and cool room accents."]
+    ],
     "silk-pick-stitch-quilt": [
       ["Elegant texture", "The Ivory color keeps the bedroom bright, and the pick-stitch texture adds detail without a busy pattern."],
       ["Looks lovely on the bed", "I like the soft, subtle stitching and the way this quilt layers with plain pillowcases."],
@@ -946,6 +1028,7 @@
     'bamboo-dream-quilt':1643,
     'organic-cotton-hand-stitched-quilt-set':830,
     'silk-pick-stitch-quilt':30,
+    'european-linen-cotton-stitch-quilt-set':5000,
     'thermasoft':2537, 'haven-quilt':1320, 'cloudloft':3014,
     'willow-coverlet':986, 'ultraplush':1941, 'meadow-bloom':743,
     'knitluxe':1276, 'evercozy':428, 'fireside':2246,
