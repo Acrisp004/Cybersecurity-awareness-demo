@@ -1,0 +1,16 @@
+{
+  "name": "keylogger",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-27",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "kv_namespaces": [
+    {
+      "binding": "CYBER_AWARENESS_INVITES",
+      "id": "75bd6ae6f02f493fa3f13c59bf96cc44"
+    }
+  ]
+}
