@@ -327,9 +327,59 @@
     material:'Detailed fiber composition not specified; refer to the product label.',
     care:'Check the product care label for cleaning instructions.',
     sizes:{'Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
+  }  ,{
+    id:'organic-cotton-hand-stitched-quilted-sham-set',
+    name:'Organic Cotton Hand Stitched Quilted Sham Set', type:'sham', color:'Pine',
+    price:50, old:null, sale:false, rating:5.0, reviews:'101', writtenReviewCount:9,
+    filterMaterial:'organic-cotton', quiltType:'stitched', pattern:'textured',
+    image:'organic-hand-stitched-sham-pine-stacked.png',
+    gallery:[
+      'organic-hand-stitched-sham-pine-stacked.png',
+      'organic-hand-stitched-sham-pine-bedding-closeup.png',
+      'organic-hand-stitched-sham-pine-bedroom-front.png',
+      'organic-hand-stitched-sham-pine-bedroom-side.png'
+    ],
+    galleries:{
+      'Pine':[
+        'organic-hand-stitched-sham-pine-stacked.png',
+        'organic-hand-stitched-sham-pine-bedding-closeup.png',
+        'organic-hand-stitched-sham-pine-bedroom-front.png',
+        'organic-hand-stitched-sham-pine-bedroom-side.png'
+      ],
+      'Ocean':[
+        'organic-hand-stitched-sham-ocean-stacked.png',
+        'organic-hand-stitched-sham-ocean-bedding-closeup.png',
+        'organic-hand-stitched-sham-ocean-bedroom-front.png',
+        'organic-hand-stitched-sham-ocean-bedroom-side.png'
+      ],
+      'Undyed':[
+        'organic-hand-stitched-sham-undyed-stacked.png',
+        'organic-hand-stitched-sham-undyed-bedding-closeup.png',
+        'organic-hand-stitched-sham-undyed-bedroom-front.png',
+        'organic-hand-stitched-sham-undyed-bedroom-side.png'
+      ]
+    },
+    variantImages:{
+      'Pine':'organic-hand-stitched-sham-pine-stacked.png',
+      'Ocean':'organic-hand-stitched-sham-ocean-stacked.png',
+      'Undyed':'organic-hand-stitched-sham-undyed-stacked.png'
+    },
+    sizePrices:{'Standard':50,'King':65},
+    swatches:['#344b40','#5a7f88','#ede3cc'],
+    intro:'Coordinating textured quilted pillow shams with hand-stitched details. Choose Pine, Ocean or Undyed to complement layered bedding.',
+    features:['Hand-stitched quilted texture','Three color options: Pine, Ocean and Undyed','Standard and King sizes','Coordinating look for layered bedding'],
+    material:'Organic cotton as described in the product name; detailed specifications not supplied.',
+    care:'Follow the product care label. Detailed washing instructions not supplied.',
+    sizes:{'Standard':'Dimensions coming soon','King':'Dimensions coming soon'}
   }];
 
+
   const colorPalettes = {
+  "organic-cotton-hand-stitched-quilted-sham-set": [
+    ["Pine", "#344b40"],
+    ["Ocean", "#5a7f88"],
+    ["Undyed", "#ede3cc"]
+  ],
   "european-linen-cotton-stitch-quilt-set": [
     ["Natural", "#d7d0c3"],
     ["White", "#f5f5f3"],
@@ -1024,6 +1074,7 @@
   // Classroom sample data: the metric totals are illustrative, not verified customer ratings.
   // Every detailed comment below is generated locally for this static training storefront.
   const ratingMetrics = {
+    'organic-cotton-hand-stitched-quilted-sham-set':101,
     'european-linen-cotton-stitch-quilt':2846,
     'bamboo-dream-quilt':1643,
     'organic-cotton-hand-stitched-quilt-set':830,
