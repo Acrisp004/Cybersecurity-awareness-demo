@@ -45,17 +45,24 @@
         'european-linen-orchid-bedroom-side.png',
         'european-linen-orchid-pillows.png',
         'european-linen-orchid-bedroom-front.png'
+      ],
+      'Pine':[
+        'european-linen-pine-folded.png',
+        'european-linen-pine-bedroom-side.png',
+        'european-linen-pine-bedroom-front.png',
+        'european-linen-pine-pillows.png'
       ]
     },
     variantImages:{
       'Natural':'european-linen-natural-folded.jpg',
-      'Orchid':'european-linen-orchid-folded.png'
+      'Orchid':'european-linen-orchid-folded.png',
+      'Pine':'european-linen-pine-folded.png'
     },
     sizePrices:{'Twin':129,'Full/Queen':139,'King':159},
     sizeOriginalPrices:{'Twin':235,'Full/Queen':267,'King':325},
-    swatches:['#d9d4c8','#c9b0be'],
-    intro:'A relaxed quilted bedding layer with soft, dimensional stitching. Choose the neutral Natural shade or the softly muted pink Orchid shade for a cozy, layered look.',
-    features:['Subtle stitched texture','Natural and Orchid colorways','Three size options','Coordinated look for layered bedding'],
+    swatches:['#d9d4c8','#c9b0be','#485b4a'],
+    intro:'A relaxed quilted bedding layer with soft, dimensional stitching. Choose Natural, softly muted Orchid, or deep green Pine for a cozy, layered look.',
+    features:['Subtle stitched texture','Natural, Orchid, and Pine colorways','Three size options','Coordinated look for layered bedding'],
     material:'Linen/cotton composition — exact fabric details to be confirmed',
     care:'Follow the product care label. Full care instructions to be confirmed.',
     sizes:{'Twin':'Dimensions coming soon','Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
@@ -103,7 +110,8 @@
   const colorPalettes = {
   "european-linen-cotton-stitch-quilt": [
     ["Natural", "#d9d4c8"],
-    ["Orchid", "#c9b0be"]
+    ["Orchid", "#c9b0be"],
+    ["Pine", "#485b4a"]
   ],
   "thermasoft": [
     [
