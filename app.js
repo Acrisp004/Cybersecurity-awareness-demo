@@ -238,9 +238,31 @@
     care:'Follow the product care label. Full care instructions to be confirmed.',
     sizes:{'Standard':'Dimensions coming soon','King':'Dimensions coming soon'}
 
+  },{
+    id:'silk-pick-stitch-quilt',
+    name:'Silk Pick Stitch Quilt', type:'quilt', color:'Ivory',
+    price:630, old:1312.50, sale:true, rating:4.1, reviews:'30', writtenReviewCount:5,
+    filterMaterial:'silk', quiltType:'stitched', pattern:'textured',
+    image:'silk-pick-stitch-ivory-folded.png',
+    gallery:[
+      'silk-pick-stitch-ivory-folded.png',
+      'silk-pick-stitch-ivory-bedroom-side.png',
+      'silk-pick-stitch-ivory-bedroom-front.png',
+      'silk-pick-stitch-ivory-fabric-detail.png',
+      'silk-pick-stitch-ivory-bed-closeup.png'
+    ],
+    sizePrices:{'Full/Queen':630,'King':700},
+    sizeOriginalPrices:{'Full/Queen':1312.50,'King':1458.33},
+    swatches:['#f1eee8'],
+    intro:'Soft Ivory coloring and subtle pick-stitch texture create an elegant, relaxed bedroom layer.',
+    features:['Ivory colorway','Pick-stitch texture','Available in Full/Queen and King','Layered bedding look'],
+    material:'Detailed fiber composition not specified; refer to the product label.',
+    care:'Check the product care label for cleaning instructions.',
+    sizes:{'Full/Queen':'Dimensions coming soon','King':'Dimensions coming soon'}
   }];
 
   const colorPalettes = {
+  "silk-pick-stitch-quilt": [["Ivory", "#f1eee8"]],
   "organic-cotton-hand-stitched-quilt-set": [
     ["White", "#f8f7f2"],
     ["Pine", "#34443b"],
@@ -587,7 +609,7 @@
     }));
     p.old = {"thermasoft": 299, "haven-quilt": 279, "cloudloft": 139, "willow-coverlet": 259, "ultraplush": 399, "meadow-bloom": 289, "knitluxe": 119, "evercozy": 429}[p.id] || p.old;
     // Keep a mix of sale prices and regular prices so the Deals filter is meaningful.
-    const saleIds=['european-linen-cotton-stitch-quilt','bamboo-dream-quilt','organic-cotton-jacquard-floral-sham-set','thermasoft','cloudloft','ultraplush','knitluxe','evercozy','fireside','aurora','aspen','harbor','rosewood','luna'];
+    const saleIds=['european-linen-cotton-stitch-quilt','bamboo-dream-quilt','silk-pick-stitch-quilt','organic-cotton-jacquard-floral-sham-set','thermasoft','cloudloft','ultraplush','knitluxe','evercozy','fireside','aurora','aspen','harbor','rosewood','luna'];
     if (!saleIds.includes(p.id)) p.old = null;
     p.sale = typeof p.old === 'number' && p.old > p.price;
   });
@@ -894,6 +916,11 @@
 
   // Sample comments for additional products (not submitted by customers).
   const reviewSeeds = {
+    "silk-pick-stitch-quilt": [
+      ["Elegant texture", "The Ivory color keeps the bedroom bright, and the pick-stitch texture adds detail without a busy pattern."],
+      ["Looks lovely on the bed", "I like the soft, subtle stitching and the way this quilt layers with plain pillowcases."],
+      ["Double-check the dimensions", "The Ivory finish looks good, but I would compare the Full/Queen and King measurements before choosing one."]
+    ],
     "organic-cotton-hand-stitched-quilt-set": [["The stitching stands out", "The hand-stitched pattern adds character to plain bedding, and the White color keeps the room bright."], ["Love the Pine shade", "The Pine finish looks lovely layered with cream-colored sheets. I like the visible stitch detail."], ["Nice texture, check sizing", "The Undyed color works well in a neutral room. I would check the dimensions carefully before selecting a size."]],
     "fireside": [["Comfortable addition", "The fireside luxe heated blanket looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the slate color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
     "aurora": [["Comfortable addition", "The aurora sherpa heated throw looks cozy and pairs well with neutral bedding."], ["Nice details", "I like the sage color. The description made it easy to understand the sizes."], ["Worth checking measurements", "The texture is soft, but I would double-check the dimensions before choosing a size."]],
@@ -918,6 +945,7 @@
     'european-linen-cotton-stitch-quilt':2846,
     'bamboo-dream-quilt':1643,
     'organic-cotton-hand-stitched-quilt-set':830,
+    'silk-pick-stitch-quilt':30,
     'thermasoft':2537, 'haven-quilt':1320, 'cloudloft':3014,
     'willow-coverlet':986, 'ultraplush':1941, 'meadow-bloom':743,
     'knitluxe':1276, 'evercozy':428, 'fireside':2246,
