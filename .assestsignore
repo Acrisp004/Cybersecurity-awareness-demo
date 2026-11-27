@@ -1,0 +1,8 @@
+worker.js
+wrangler.jsonc
+firebase-rules.json
+README.txt
+.assetsignore
+.git*
+*.ps1
+node_modules/
