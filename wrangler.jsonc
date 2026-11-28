@@ -1,3 +1,4 @@
+
 {
   "name": "keylogger",
   "main": "worker.js",
@@ -12,5 +13,8 @@
       "binding": "CYBER_AWARENESS_INVITES",
       "id": "75bd6ae6f02f493fa3f13c59bf96cc44"
     }
-  ]
+  ],
+  "secrets": {
+    "required": ["Invite_Admin_Secret"]
+  }
 }
