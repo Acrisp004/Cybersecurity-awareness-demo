@@ -12,18 +12,17 @@ export default {
         env.Invite_Admin_Secret
       );
 
-      return Response.json(
-        {
-          ready: kvConnected && secretConnected,
-          kvConnected,
-          secretConnected
-        },
-        {
-          headers: {
-            "Cache-Control": "no-store"
-          }
-        }
-      );
+      const matchingBindings = Object.keys(env)
+        .filter(name => /invite|admin|secret/i.test(name));
+
+      return Response.json({
+        ready: kvConnected && secretConnected,
+        kvConnected,
+        secretConnected,
+        matchingBindings
+      }, {
+        headers: { "Cache-Control": "no-store" }
+      });
     }
 
     return env.ASSETS.fetch(request);
