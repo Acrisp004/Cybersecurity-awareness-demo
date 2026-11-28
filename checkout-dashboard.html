@@ -22,6 +22,44 @@ button[hidden],#signed-in[hidden]{display:none}button:focus-visible{outline:3px 
 <code id="instructor-uid"></code>
 <button id="google-logout" type="button">Sign out</button></div>
 <p id="dashboard-status" role="status" aria-live="polite">Sign in with Google to continue.</p></div>
+
+<section class="card" id="invitation-tools" hidden>
+  <h2>Student Invitation Links</h2>
+  <p>
+    Generate secure classroom invitation links.
+    Each link expires automatically after 60 minutes.
+  </p>
+
+  <button id="generate-invite" type="button" disabled>
+    Generate New Link
+  </button>
+
+  <p id="invite-status" role="status" aria-live="polite">
+    Invitation controls are not connected yet.
+  </p>
+
+  <div id="invite-result" hidden>
+    <h3>Generated Invitation</h3>
+
+    <label for="invite-url">Student access link</label>
+    <input
+      id="invite-url"
+      type="text"
+      readonly
+      style="width:100%;padding:12px;margin:10px 0;"
+    >
+
+    <p id="invite-expiry"></p>
+
+    <button id="copy-invite" type="button" disabled>
+      Copy Link
+    </button>
+
+    <button id="revoke-invite" type="button" disabled>
+      Revoke Link
+    </button>
+  </div>
+</section>
 <h2>Active practice sessions: <span id="session-count">0</span></h2>
 <div id="session-list" aria-live="polite"><p class="muted">No active sessions.</p></div>
 </main><script type="module" src="firebase-live-dashboard.js"></script></body></html>
