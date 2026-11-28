@@ -1,18 +1,27 @@
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
     if (url.pathname === "/api/health") {
-      const ready = Boolean(
-        env.CYBER_AWARENESS_INVITES &&
+      const kvConnected = Boolean(
+        env.CYBER_AWARENESS_INVITES
+      );
+
+      const secretConnected = Boolean(
         env.Invite_Admin_Secret
       );
 
       return Response.json(
-        { ready },
         {
-          status: ready ? 200 : 503,
-          headers: { "Cache-Control": "no-store" }
+          ready: kvConnected && secretConnected,
+          kvConnected,
+          secretConnected
+        },
+        {
+          headers: {
+            "Cache-Control": "no-store"
+          }
         }
       );
     }
