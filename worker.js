@@ -4,8 +4,8 @@ export default {
 
     if (url.pathname === "/api/health") {
       const ready = Boolean(
-        env.CYBER_AWARENESS_INVITES &&
-        env.INVITE_ADMIN_SECRET
+        env.Cyber_Awareness_Invites &&
+        env.Invite_Admin_Secret
       );
 
       return Response.json(
